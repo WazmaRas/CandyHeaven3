@@ -20,7 +20,7 @@ namespace CandyHeaven.Models
         public Product(string name, double price, string image, int id, bool chosen, int quantity, string productInfo)
         {
             Name = name;
-            Price = price;
+            Price = Math.Round(price, 2);
             ImageURL = image;
             Id = id;
             Chosen = chosen;

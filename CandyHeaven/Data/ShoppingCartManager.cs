@@ -70,7 +70,16 @@ namespace CandyHeaven.Data
 
 
         }
-
+        /// <summary>
+        /// Empty shoppingcart
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public static List<Models.Product> EmptyCart(List<Models.Product> products)
+        {
+            ShopCart = null;
+            return ShopCart;
+        }
 
 
         private static List<Models.Product> NotFound()
