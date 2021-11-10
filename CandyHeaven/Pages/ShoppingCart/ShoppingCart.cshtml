@@ -3,44 +3,34 @@
 @{
 }
 
-<h1>Varukorg</h1>
+<h1>Varukorg (@Model.ShoppingCart.Count @Model.ItemsInCart)</h1>
 
+<form method="post" asp-page="ShoppingCart">  
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2">Produkt</th>
+                <th class="text-center">Antal</th>
+                <th>Summa</th>
+            </tr>
+        </thead>
+        @foreach (var product in Model.ShoppingCart)
+        {
+    <tr>
+        <td><img src="@product.ImageURL" alt="@product.Name image" /></td>
+        <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
+        <td>
+            <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
+            <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
 
+        </td>
+        @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
+        <td>@product.Price kr</td>
+    </tr>
+        }
+    </table>
+</form>
 
-<h2>@Model.ShoppingCart.Count @Model.QuantityMessage</h2>
-<div class="row">
-    @foreach (var prod in Model.ShoppingCart)
-    {
-
-
-
-        <div class="card col-3" style="width: 18rem;">
-            <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
-
-
-
-
-            <div class="card-body">
-                <h5 class="card-title">@prod.Name</h5>
-                <h6>@prod.Price SEK </h6>
-            </div>
-            <a asp-page="ShoppingCart" asp-route-addId="@prod.Id" class="btn btn-outline-dark">Lägg till en vara</a> <a asp-page="ShoppingCart" asp-route-removeId="@prod.Id" class="btn btn-outline-dark">Ta bort en vara</a>
-
-
-
-
-            <p style="color:green">@(prod.StockQuantity > 0 ? "Finns på lager" : "Ej i lager") </p>
-
-
-
-        </div>
-
-
-
-        @(Model.Sum += prod.Price)
-    }
+<div class="flex-row float-right">
+    <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
 </div>
-
-
-
-<h2>Att betala: @Model.Sum</h2>

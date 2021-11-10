@@ -10,11 +10,8 @@ namespace CandyHeaven.Pages.ShoppingCart
     public class ShoppingCartModel : PageModel
     {
         public List<Models.Product> ShoppingCart { get; set; }
+        public string ItemsInCart { get; set; }
 
-
-
-        [BindProperty]
-        public string QuantityMessage { get; set; }
         [BindProperty]
         public double Sum { get; set; }
 
@@ -28,9 +25,6 @@ namespace CandyHeaven.Pages.ShoppingCart
         /// <param name="removeId"></param>
         public void OnGet(int addId, int removeId)
         {
-            ShoppingCart = Data.ShoppingCartManager.GetProducts();
-            QuantityMessage = ShoppingCart.Count >= 1 ? "Vara" : "Varor";
-
             if (addId != 0)
             {
                 ShoppingCart = Data.ShoppingCartManager.AddToCart(addId);
@@ -39,9 +33,8 @@ namespace CandyHeaven.Pages.ShoppingCart
             {
                 ShoppingCart = Data.ShoppingCartManager.RemoveFromCart(removeId);
             }
-
-
-
-        }
+            ShoppingCart = Data.ShoppingCartManager.GetProducts();
+            ItemsInCart = ShoppingCart.Count == 1 ? "Vara" : "Varor";
+        }  
     }
 }
