@@ -11,9 +11,11 @@ namespace CandyHeaven.Pages
     {
         public List<Models.Product> Products { get; set; }
         public List<Models.Product> ShopCart { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
         public void OnGet(int id)
         {
-            Products = Data.ProductManager.GetAllProducts();
+            Products = Data.ProductManager.Search(SearchTerm);
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);

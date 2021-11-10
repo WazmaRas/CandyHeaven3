@@ -16,7 +16,10 @@ a {
     color: #000000;
     background-color: #ffe6ff;
     border-color: #1861ac;
+    font-family: 'Lobster', cursive;
 }
+
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;

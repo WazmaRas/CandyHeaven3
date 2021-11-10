@@ -10,8 +10,9 @@ namespace CandyHeaven.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<Models.Product> Products { get; set; } 
-        
+        public List<Models.Product> Products { get; set; }
+        public List<Models.Product> ShopCart { get; set; }
+
         public void OnGet(int id)
         {
             Products = Data.ProductManager.GetAllProducts();
@@ -19,9 +20,11 @@ namespace CandyHeaven.Pages
             Products = chosenProducts;
 
 
-            //använder inte result?
-            var result = Products.Where(prod => prod.Id == id).FirstOrDefault();
+            if (id != 0)
+            {
+                ShopCart = Data.ShoppingCartManager.AddToCart(id);
 
+            }
         }
     }
 }

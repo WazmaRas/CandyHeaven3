@@ -4,33 +4,18 @@
 }
 <
 <nav class="navbar navbar-expand-md navbar-light">
-
     <a class="navbar-brand" href="/CandyHeavenLogo.png">
         <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
     </a>
-
- 
-    
-
-   
-    
- 
 </nav>
 
 <form method="get">
     <div class="input-group">
         <input class="form-check form-control" asp-for="SearchTerm" />
         <div class="input-group-append">
-
-
             <button type="submit" class="btn btn-primary">Sök</button>
-
-
         </div>
-
     </div>
-
-
 </form>
 
 
@@ -38,17 +23,118 @@
 <div class="row">
     @foreach (var prod in Model.Products)
     {
+        if (prod is Models.BulkCandy)
+        {
+            <div class="card col-3" style="width: 18rem;">
+                <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@prod.Name</h5>
 
-        <div class="card col-3" style="width: 18rem;">
-            <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">@prod.Name</h5>
+                    <h6>@prod.Price kr</h6>
+                    <p>
+                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Mer info
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            @prod.ProductInfo
+                            <h6 style="font-family:'Lobster', cursive; ">
+                                Godis Sort :
+                                @(((Models.BulkCandy)prod).CandySort)
+                            </h6>
 
-                <h6>@prod.Price kr </h6>
+                            @if (prod.StockQuantity > 0)
+                            {
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager</h6>
+                            }
+                            else
+                            {
+                                <h6> Ej på lager</h6>
+                            }
+                        </div>
+                    </div>
 
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                </div>
             </div>
-        </div>
+        }
+
+        if (prod is Models.Bar)
+        {
+            <div class="card col-3" style="width: 18rem;">
+                <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@prod.Name</h5>
+
+                    <h6>@prod.Price kr</h6>
+                    <p>
+                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Mer info
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            @prod.ProductInfo
+                            <p></p>
+                            <h6 style="font-family:'Lobster', cursive; ">
+                                Bar smak:
+                                @(((Models.Bar)prod).Taste)
+                            </h6>
+
+                            @if (prod.StockQuantity > 0)
+                            {
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager</h6>
+                            }
+                            else
+                            {
+                                <h6> Ej på lager</h6>
+                            }
+
+                        </div>
+                    </div>
+
+                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                </div>
+            </div>
+        }
+
+        if (prod is Models.CandyBag)
+        {
+            <div class="card col-3" style="width: 18rem;">
+                <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@prod.Name</h5>
+
+                    <h6>@prod.Price kr</h6>
+                    <p>
+                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Mer info
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            @prod.ProductInfo
+                            <h6 style="font-family: 'Lobster', cursive;">
+                                Vikt på påsen:
+                                @(((Models.CandyBag)prod).Weight) gram
+                            </h6>
+
+                            @if (prod.StockQuantity > 0)
+                            {
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager</h6>
+                            }
+                            else
+                            {
+                                <h6> Ej på lager</h6>
+                            }
+                        </div>
+                    </div>
+                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+
+                </div>
+            </div>
+        }
+    }
     }
 </div>
