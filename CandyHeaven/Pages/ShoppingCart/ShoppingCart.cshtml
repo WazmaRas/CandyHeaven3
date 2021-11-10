@@ -1,0 +1,46 @@
+﻿@page
+@model CandyHeaven.Pages.ShoppingCart.ShoppingCartModel
+@{
+}
+
+<h1>Varukorg</h1>
+
+
+
+<h2>@Model.ShoppingCart.Count @Model.QuantityMessage</h2>
+<div class="row">
+    @foreach (var prod in Model.ShoppingCart)
+    {
+
+
+
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+
+
+
+
+            <div class="card-body">
+                <h5 class="card-title">@prod.Name</h5>
+                <h6>@prod.Price SEK </h6>
+            </div>
+            <a asp-page="ShoppingCart" asp-route-addId="@prod.Id" class="btn btn-outline-dark">Lägg till en vara</a> <a asp-page="ShoppingCart" asp-route-removeId="@prod.Id" class="btn btn-outline-dark">Ta bort en vara</a>
+
+
+
+
+            <p style="color:green">@(prod.StockQuantity > 0 ? "Finns på lager" : "Ej i lager") </p>
+
+
+
+        </div>
+
+
+
+        @(Model.Sum += prod.Price)
+    }
+</div>
+
+
+
+<h2>Att betala: @Model.Sum</h2>

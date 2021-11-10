@@ -1,0 +1,27 @@
+﻿@page
+@model CandyHeaven.Pages.ShoppingCart.ShippingModel
+@{
+}
+
+<form method="post">
+    Förnamn: <input asp-for="@Model.Name" />
+    Efternamn: <input asp-for="@Model.LastName" />
+    Email:<input asp-for="@Model.Email" />
+    Adress:<input asp-for="@Model.Adress" />
+
+    <input type="submit" />
+</form>
+
+
+<h1>Leverans</h1>
+
+<form action="/action_page.php">
+    <p>Välj leveranssätt:</p>
+    <a asp-for ="Payment" asp-route-id="39"></a>
+    <input type="radio" id="html" name="fav_language" value="HTML">
+    <label for="html">DHL Express</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">Instabox</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">Hämta i butik</label>
+</form>

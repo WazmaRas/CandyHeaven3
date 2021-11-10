@@ -1,0 +1,54 @@
+﻿@page
+@model CandyHeaven.Pages.CandyShopModel
+@{
+}
+<
+<nav class="navbar navbar-expand-md navbar-light">
+
+    <a class="navbar-brand" href="/CandyHeavenLogo.png">
+        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
+    </a>
+
+ 
+    
+
+   
+    
+ 
+</nav>
+
+<form method="get">
+    <div class="input-group">
+        <input class="form-check form-control" asp-for="SearchTerm" />
+        <div class="input-group-append">
+
+
+            <button type="submit" class="btn btn-primary">Sök</button>
+
+
+        </div>
+
+    </div>
+
+
+</form>
+
+
+
+<div class="row">
+    @foreach (var prod in Model.Products)
+    {
+
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@prod.Name</h5>
+
+                <h6>@prod.Price kr </h6>
+
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+            </div>
+        </div>
+    }
+</div>

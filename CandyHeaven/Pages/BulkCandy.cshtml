@@ -1,0 +1,30 @@
+﻿@page
+@model CandyHeaven.Pages.BulkCandyModel
+@{
+}
+<div class="row">
+    @foreach (var item in Model.Products)
+    {
+        if (item is Models.BulkCandy)
+        {
+            <div class="card col-3" style="width: 18rem;">
+                <img class="card-img-top" src=@item.ImageURL alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+
+                    <h6>@item.Price Kr</h6>
+
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <a asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
+
+                    @*<a asp-controller="Dogs" asp-action="Congratulation" asp-route-id=@dog.Id class="btn btn-primary">Adopt me</a>*@
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>
+   

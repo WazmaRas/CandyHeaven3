@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<nav class="navbar navbar-expand-md navbar-light">
+
+<a class="navbar-brand" href="#!">
+    <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
+</a>
+
+
+</nav>
+<div style="background-color: #A4FFF5 " class="jumbotron">
+    <h1 style="font-family: 'Lobster', cursive;" class="display-4">Candy Heaven</h1>
+    <p style="font-family: 'Lobster', cursive;" class="lead">Make life a little sweeter</p>
+    <hr class="my-4">
+    @*<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>*@
+    <p class="lead">
+
+
+
+        
+
+        <a class="btn btn-primary btn-lg" href="CandyShop" role="button">Shoppa mer</a>
+        <a class="btn btn-primary btn-lg" href="ListOfBars" role="button">Bars</a>
+        <a class="btn btn-primary btn-lg" href="CandyBag" role="button">Godispåsar</a>
+        <a class="btn btn-primary btn-lg" href="BulkCandy" role="button">Lösvikt</a>
+
+
+
+
+
+
+
+    </p>
+</div>
+<div class="row">
+    @foreach (var prod in Model.Products)
+    {
+
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@prod.Name</h5>
+
+                <h6>@prod.Price kr</h6>
+                <p>
+
+                    
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Mer info
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        @prod.ProductInfo
+                    </div>
+                </div>
+                @*<p class="card-text">@prod.ProductInfo</p>*@
+                <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+
+
+
+                @*<a asp-route-id=@prod.Id class="btn btn-primary">Mer info</a>*@
+            </div>
+        </div>
+    }
+</div>
