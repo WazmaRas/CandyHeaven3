@@ -8,7 +8,10 @@ namespace CandyHeaven.Data
 {
     public class ProductManager
     {
-
+        /// <summary>
+        /// Method to get all products
+        /// </summary>
+        /// <returns></returns>
         public static List<Models.Product> GetAllProducts()
         {
             List<Models.Product> products = new List<Models.Product>();
@@ -32,7 +35,11 @@ namespace CandyHeaven.Data
 
             return products;
         }
-
+        /// <summary>
+        /// Method for searching the productlist for users specific searchterm.
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <returns></returns>
         public static List<Models.Product> Search(string searchTerm)
         {
           List<Models.Product> AllProducts = GetAllProducts();

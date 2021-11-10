@@ -3,9 +3,9 @@
 @{
 }
 
-<h1>Varukorg (@Model.ShoppingCart.Count @Model.QuantityMessage)</h1>
+<h1>Varukorg (@Model.ShoppingCart.Count @Model.ItemsInCart)</h1>
 
-<!--<form method="post" asp-page="ShoppingCart">-->@*  *@
+<form method="post" asp-page="ShoppingCart">  
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -29,7 +29,7 @@
     </tr>
         }
     </table>
-@*</form>*@
+</form>
 
 <div class="flex-row float-right">
     <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
