@@ -31,21 +31,6 @@ namespace CandyHeaven.Pages.ShoppingCart
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             QuantityMessage = ShoppingCart.Count >= 1 ? "Vara" : "Varor";
 
-
-            //if (addId != 0)
-            //{
-            //    ShoppingCart = Data.ShoppingCartManager.AddToCart(addId);
-            //}
-            //if (removeId != 0)
-            //{
-            //    ShoppingCart = Data.ShoppingCartManager.RemoveFromCart(removeId);
-            //}
-        }
-        public void OnPost(int addId, int removeId)
-        {
-            ShoppingCart = Data.ShoppingCartManager.GetProducts();
-
-            QuantityMessage = ShoppingCart.Count >= 1 ? "Vara" : "Varor";
             if (addId != 0)
             {
                 ShoppingCart = Data.ShoppingCartManager.AddToCart(addId);
