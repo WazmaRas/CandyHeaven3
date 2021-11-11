@@ -5,13 +5,15 @@
 }
 
 <nav class="navbar navbar-expand-md navbar-light">
+
 <a class="navbar-brand" href="#!">
     <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
 </a>
-</nav>
 
+
+</nav>
 <div style="background-color: #A4FFF5 " class="jumbotron">
-    <h1 style="font-family: 'Lobster', cursive;" class="display-4">Candy Heaven</h1>
+    <h1  class="display-4">Candy Heaven</h1>
     <p style="font-family: 'Lobster', cursive;" class="lead">Make life a little sweeter</p>
     <hr class="my-4">
     @*<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>*@
@@ -19,10 +21,9 @@
         <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="CandyShop" role="button">Shoppa mer</a>
         <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="ListOfBars" role="button">Bars</a>
         <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="CandyBag" role="button">Godispåsar</a>
-        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="BulkCandy" role="button">Lösvikt</a>
+        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="BulkCandy" role="button">Pick</a>
     </p>
 </div>
-
 <div class="row">
     @foreach (var prod in Model.Products)
     {
@@ -33,9 +34,10 @@
                 <div class="card-body">
                     <h5 class="card-title">@prod.Name</h5>
 
-                    <h6>@prod.Price kr</h6>
-
+                    <h6>@prod.Price.ToString("n2") kr</h6>
                     <p>
+
+
                         <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
@@ -56,6 +58,8 @@
                             {
                                 <h6> Ej på lager</h6>
                             }
+
+
                         </div>
                     </div>
                     
@@ -71,13 +75,14 @@
                 <div class="card-body">
                     <h5 class="card-title">@prod.Name</h5>
 
-                    <h6>@prod.Price kr</h6>
+                    <h6>@prod.Price.ToString("n2") kr</h6>
                     <p>
+
+
                         <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
                     </p>
-
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             @prod.ProductInfo
@@ -111,7 +116,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@prod.Name</h5>
 
-                    <h6>@prod.Price kr</h6>
+                    <h6>@prod.Price.ToString("n2") kr</h6>
                     <p>
 
 
