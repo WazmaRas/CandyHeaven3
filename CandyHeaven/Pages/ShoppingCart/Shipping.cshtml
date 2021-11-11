@@ -50,7 +50,7 @@
                 Efternamn: <input asp-for="@Model.LastName" /><br />
                 Email:<input asp-for="@Model.Email" /><br />
                 Adress:<input asp-for="@Model.Adress" />
-  
+
 
                 <p>Välj leveranssätt:</p>
 
@@ -64,6 +64,29 @@
                 <input type="radio" id="javascript" name="frakt" value="JavaScript">
                 <label for="javascript">Hämta i butik</label>
                 <a asp-for="Payment" asp-route-id="39"></a>
+
+                <p>
+
+
+                    <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                       Välj Levrans sätt
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <form action="/ShoppingCart/Payment">
+
+
+                            <input type="radio" id="html" name="fav_language" value="HTML">
+                            <label for="html">VISA/MasterCard</label><br>
+                            <input type="radio" id="css" name="fav_language" value="Fakturabetalning">
+                            <label for="css">Instabox</label><br>
+                            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                            <label for="javascript">Hämta i butik</label>
+                        </form>
+
+                    </div>
+                </div>
 
                 <a type="submit" class="btn btn-outline-dark btn-lg" href="Payment" role="button">FORTSÄTT</a>
             </td>
