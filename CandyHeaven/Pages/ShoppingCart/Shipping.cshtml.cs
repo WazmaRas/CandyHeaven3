@@ -28,14 +28,30 @@ namespace CandyHeaven.Pages.ShoppingCart
         [BindProperty]
         public string PaymentMethod { get; set; }
 
-        public Models.Person person { get; set; } 
+        public Models.Person Person { get; set; }
+        // ändringar
+        [BindProperty]
+        public List<Models.Product> ShoppingCart { get; set; }
+        
+
+        [BindProperty]
+        public double Sum { get; set; }
+
         public void OnGet()
         {
 
+            ShoppingCart = Data.ShoppingCartManager.GetProducts();
+
         }
-        public void OnPost()
-        {
-            person = Data.PersonManager.GetPerson(Name, LastName, Email, Adress);
-        }
+        //public IActionResult OnPost(name, lastName, email, adress)
+        //{
+        //    Person = Data.PersonManager.GetPerson(name, lastName, email, adress);
+        //    if (ModelState.IsValid == false)
+        //    {
+        //        return Page();
+        //    }
+        //    return RedirectToPage("/Payment", new { Person.Name });
+
+        //}
     }
 }

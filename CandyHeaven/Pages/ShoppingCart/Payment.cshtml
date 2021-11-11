@@ -2,6 +2,9 @@
 @model CandyHeaven.Pages.ShoppingCart.PaymentModel
 @{
 }
+
+<p>@Model.Name</p>
+
 <h1>Välj betalsätt</h1>
 
 <form action="/ShoppingCart/Payment">
@@ -14,6 +17,8 @@
     <input type="radio" id="javascript" name="fav_language" value="JavaScript">
     <label for="javascript">Hämta i butik</label>
 </form>
+
+
 <div class="flex-row float-right">
     <a class="btn btn-outline-dark btn-lg" href="OrderSuccessful" role="button">FORTSÄTT</a>
 </div>
