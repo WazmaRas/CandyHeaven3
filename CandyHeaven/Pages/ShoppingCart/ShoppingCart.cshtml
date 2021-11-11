@@ -2,10 +2,12 @@
 @model CandyHeaven.Pages.ShoppingCart.ShoppingCartModel
 @{
 }
-
-<h1>Varukorg (@Model.ShoppingCart.Count @Model.ItemsInCart)</h1>
-
-<form method="post" asp-page="ShoppingCart">  
+<br />
+<br />
+<h1 class="text-center">Varukorg (@Model.ShoppingCart.Count @Model.ItemsInCart)</h1>
+<br />
+<br />
+<form method="post" asp-page="ShoppingCart">
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -16,20 +18,34 @@
         </thead>
         @foreach (var product in Model.ShoppingCart)
         {
-    <tr>
-        <td><img src="@product.ImageURL" alt="@product.Name image" /></td>
-        <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
-        <td>
-            <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
-            <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
+            <tr>
+                <td><img src="@product.ImageURL" class="cart-images" alt="@product.Name image" /></td>
+                <td>@product.Name <br /><p style="color:green">@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager") </p></td>
+                <td>
+                    <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
+                    <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
 
-        </td>
-        @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
-        <td>@product.Price kr</td>
-    </tr>
+                </td>
+                @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
+                <td>@product.Price.ToString("n2") kr</td>
+            </tr>
         }
+
+        <tfoot>
+            <tr>
+
+                <td colspan="3"><h4>Totala summan:</h4> <br />Inkl. Moms</td>
+                <td><h4>@Model.Sum.ToString("n2") kr</h4></td>
+
+
+            </tr>
+
+        </tfoot>
     </table>
 </form>
+
+
+
 
 <div class="flex-row float-right">
     <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
