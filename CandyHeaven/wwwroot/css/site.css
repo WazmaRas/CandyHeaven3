@@ -73,4 +73,11 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.cart-images {
+    max-width: 80px;
+    max-height: 80px
+}
+h1 {
+    font-family: 'Lobster', cursive;
+}
 

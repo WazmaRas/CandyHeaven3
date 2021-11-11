@@ -16,7 +16,7 @@ namespace CandyHeaven.Pages
         public void OnGet(int id)
         {
             Products = Data.ProductManager.GetAllProducts();
-            var chosenProducts = Products.Where(product => product.Chosen == true).ToList();
+            var chosenProducts = Products.Where(product => product.Featured == true).ToList();
             Products = chosenProducts;
 
 

@@ -9,9 +9,9 @@ namespace CandyHeaven.Models
     {
 
         public int Weight { get; set; }
-        public CandyBag(string name, double price, string image, int id, bool chosen, int quantity, string productInfo, int weight) : base(name, price, image, id, chosen, quantity, productInfo)
+        public CandyBag(int id, string name, string description, bool featured, double price, string imageUrl, int stock, int weightInGrams) : base(id, name, description, featured, price, imageUrl, stock)
         {
-            Weight = weight;
+            Weight = weightInGrams;
         }
 
 

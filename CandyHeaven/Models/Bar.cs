@@ -8,7 +8,7 @@ namespace CandyHeaven.Models
     public class Bar: Product
     {
         public string Taste { get; set; }
-        public Bar(string name, double price, string image, int id, bool chosen, int quantity, string productInfo, string taste) : base(name, price, image, id, chosen, quantity, productInfo)
+        public Bar(int id, string name, string description, bool featured, double price, string imageUrl, int stock, string taste) : base(id, name, description, featured, price, imageUrl, stock)
         {
             Taste = taste;
         }

@@ -9,9 +9,9 @@ namespace CandyHeaven.Models
     {
 
         public string CandySort { get; set; }
-        public BulkCandy(string name, double price, string image, int id, bool chosen, int quantity, string productInfo, string candysort) : base(name, price, image, id, chosen, quantity, productInfo)
+        public BulkCandy(int id, string name, string description, bool featured, double price, string imageUrl, int stock, string candySort) : base(id, name, description, featured, price, imageUrl, stock)
         {
-            CandySort = candysort;
+            CandySort = candySort;
         }
 
 
