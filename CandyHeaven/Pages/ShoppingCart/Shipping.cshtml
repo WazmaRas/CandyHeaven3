@@ -15,7 +15,7 @@
         @foreach (var product in Model.ShoppingCart)
         {
             <tr>
-                <td><img src="@product.ImageURL" alt="@product.Name image" /></td>
+                <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
                 <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
                 <td>
                     <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
@@ -23,35 +23,38 @@
 
                 </td>
                 @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
-                <td>@product.Price kr</td>
+                <td>@product.Price.ToString("n2") kr</td>
             </tr>
         }
+        <tfoot>
+            <tr>
+                <td colspan="2"><h4>Totala summan: <br />Inkl. Moms</h4></td>
+                <td></td>
+                <td><h4>@Model.Sum.ToString("n2") kr</h4></td>
+            </tr>
+        </tfoot>
     </table>
 </form>
-
 <form  method="post">
 
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th colspan="2">Leveranssätt</th>
+                <th>Leveranssätt</th>
                 <th>Pris</th>
             </tr>
         </thead>
         <tr>
             <td>
-                @*Förnamn: <input asp-for="@Model.Name" />
-                Efternamn: <input asp-for="@Model.LastName" />
-                Email:<input asp-for="@Model.Email" />
-                Adress:<input asp-for="@Model.Adress" />*@
-                Förnamn: <input asp-page="Shipping" asp-route-name="@Model.Name"/>
-                Efternamn: <input asp-for="@Model.LastName" />
-                Email:<input asp-for="@Model.Email" />
+                Förnamn: <input asp-for="@Model.Name" /><br />
+                Efternamn: <input asp-for="@Model.LastName" /><br />
+                Email:<input asp-for="@Model.Email" /><br />
                 Adress:<input asp-for="@Model.Adress" />
+  
 
                 <p>Välj leveranssätt:</p>
 
-                <input type="radio" id="html" name="frakt" value="">
+                <input type="radio" id="frakt" name="frakt" value="">
                 <label for="html">DHL Express</label><br>
 
                 <input type="radio" id="css" name="frakt" value="CSS">
