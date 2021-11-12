@@ -3,7 +3,9 @@
 @{
 }
 
-<form method="post" asp-page="Payment">
+
+
+<form method="post">
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -28,16 +30,13 @@
         }
         <tfoot>
             <tr>
-                <td colspan="2"><h4>Totala summan: <br />Inkl. Moms</h4></td>
+                <td colspan="2"><h4>Totala summan: <br />Inkl. Frakt och Moms</h4></td>
                 <td></td>
-                <td><h4>@Model.Sum.ToString("n2") kr</h4></td>
+                <td><h4>@(Model.FraktSum == 0? @Model.Sum.ToString("n2") : @Model.FraktSum.ToString("n2")) kr</h4></td>
             </tr>
         </tfoot>
     </table>
-</form>
-
-<form method="post">
-
+    
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -55,7 +54,7 @@
 
                 <p>Välj leveranssätt:</p>
 
-                <input type="radio" asp-for="@Model.Frakt" value="DHL">
+                <input type="radio" asp-for="@Model.Frakt" value="DHL" required>
                 <label for="DHL">DHL Express</label><br>
 
                 <input type="radio" asp-for="@Model.Frakt" value="Instabox">
@@ -64,7 +63,7 @@
 
                 <input type="radio" asp-for="@Model.Frakt" value="Hämta i butik">
                 <label for="Butik">Hämta i butik</label>
-                <h4>@Model.FraktSum.ToString("n2") kr</h4>
+
 
 
                 <p>
@@ -74,25 +73,30 @@
                         Välj Betalningssätt
                     </button>
                 </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
+                @*<div class="collapse" id="collapseExample">
+                    <div class="card card-body">*@
 
 
-                        <input type="radio" id="html" name="fav_language" value="HTML">
-                        <label for="html">VISA/MasterCard</label><br>
-                        <input type="radio" id="css" name="fav_language" value="Fakturabetalning">
-                        <label for="css">Klarna</label><br>
-                        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                        <label for="javascript">Swish</label>
+                <input type="radio" id="html" name="Payment" value="HTML" required>
+                <label for="html">VISA/MasterCard</label><br>
+                <input type="radio" id="css" name="Payment" value="Fakturabetalning">
+                <label for="css">Klarna</label><br>
+                <input type="radio" id="javascript" name="Payment" value="JavaScript">
+                <label for="javascript">Swish</label>
 
 
-                    </div>
-                </div>
+                <!--<-->@*/div>
+                    </div*@<!-->-->
 
-                <input type="submit" class="btn btn-outline-dark btn-lg" href="Shipping" role="button" value="BEKRÄFTA"></input>
-                <input type="submit" class="btn btn-outline-dark btn-lg" href="OrderSuccessful" role="button" value="Forsätt"></input>
+                <input type="submit" class="btn btn-outline-dark btn-lg" href="Shipping" role="button" value="BEKRÄFTA UPPGIFTERNA">
+
             </td>
         </tr>
     </table>
 </form>
+  <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="OrderSuccessful" role="button">FORSÄTT</a>
+ 
+
+     
+ 
 
