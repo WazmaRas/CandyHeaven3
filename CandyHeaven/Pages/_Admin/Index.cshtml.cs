@@ -41,6 +41,7 @@ namespace CandyHeaven.Pages._Admin
 
             Data.ProductManager.AddProduct(newProduct);
 
+
            
 
         }

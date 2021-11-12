@@ -17,6 +17,7 @@ namespace CandyHeaven.Pages._Admin
             if (id != 0)
             {
                 Data.ProductManager.DeleteProduct(id);
+                 
 
             }
         }

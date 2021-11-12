@@ -34,6 +34,7 @@ namespace CandyHeaven.Data
         {
             Product = Products.Where(product => product.Id == id).FirstOrDefault();
             ShopCart.Add(Product);
+            Product.StockQuantity= Product.StockQuantity - 1;
 
             return ShopCart;
         }
