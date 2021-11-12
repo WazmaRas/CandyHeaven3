@@ -42,5 +42,10 @@
 
 
 <div class="flex-row float-right">
-    <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
+    @if (@Model.Sum > 0)
+    {
+        <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
+
+    }
+
 </div>
