@@ -63,6 +63,16 @@ namespace CandyHeaven.Data
             Products.Add(productToAdd);
         }
 
+        public static List<Models.Product> DeleteProduct(int id)
+        {
+            Models.Product productToDelete = null;
+
+            productToDelete = Products.Where(product => product.Id == id).FirstOrDefault();
+            Products.Remove(productToDelete);
+
+            return Products;
+        }
+
     }
 }
 

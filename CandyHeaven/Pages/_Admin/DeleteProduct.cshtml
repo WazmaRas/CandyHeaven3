@@ -1,0 +1,21 @@
+﻿@page
+@model CandyHeaven.Pages._Admin.DeleteProductModel
+@{
+}
+<form method="post">
+    @foreach (var item in Model.Products)
+    {
+
+
+        <p>ID nummer</p>@item.Id
+        <a asp-route-id="@item.Id" class="btn btn-outline-dark">-</a>
+
+    }
+    <button type="submit">Submit</button>
+
+</form>
+
+@foreach (var product in Model.Products)
+{
+<p>@product.Id</p>
+}
