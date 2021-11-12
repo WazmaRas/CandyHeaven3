@@ -14,15 +14,15 @@ namespace CandyHeaven.Pages.ShoppingCart
         public string Name { get; set; }
 
 
-
-
-
-
         public int Dhl { get; set; }
         public void OnGet(int dhl)
         {
-            Dhl = dhl;
             
+            
+        }
+        public void OnPost(int dhl)
+        {
+            Dhl = dhl;
         }
     }
 }
