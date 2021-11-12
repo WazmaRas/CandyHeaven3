@@ -11,14 +11,21 @@ namespace CandyHeaven.Pages.ShoppingCart
     {
         [BindProperty]
         public int Ordernumber{ get; set; }
-        public List<Models.Product> ShoppingCart { get; set; }
+        public List<Models.Product> Products { get; set; } = Data.ProductManager.Products;
+        public List<Models.Product> ShoppingCart { get; set; } = Data.ShoppingCartManager.GetProducts();
 
         public void OnGet()
         {
+           
             Random random = new Random();
             Ordernumber = random.Next(100000, 200000);
+            foreach (var item in ShoppingCart)
+            {
+                Products = Data.ProductManager.StockChanges(item.Id);
 
+            }
             ShoppingCart = Data.ShoppingCartManager.EmptyCart(ShoppingCart);
+            
 
         }
     }

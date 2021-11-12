@@ -13,6 +13,8 @@ namespace CandyHeaven.Pages.ShoppingCart
         public string ItemsInCart { get; set; }
 
         public double Sum { get; set; }
+        public double Tax { get; set; } = 0.12;
+        
 
 
 
@@ -35,6 +37,8 @@ namespace CandyHeaven.Pages.ShoppingCart
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             ItemsInCart = ShoppingCart.Count == 1 ? "Vara" : "Varor";
             Sum = ShoppingCart.Sum(product => product.Price);
+            Tax = Sum * Tax;
+
         }
         
        

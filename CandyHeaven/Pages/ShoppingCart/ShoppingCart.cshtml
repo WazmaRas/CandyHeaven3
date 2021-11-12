@@ -32,9 +32,12 @@
         }
         <tfoot>
             <tr>
-                <td colspan="2"><h4>Totala summan: <br />Inkl. Moms</h4></td>
+                <td colspan="2"><h4>Totala summan: </h4> 
+                                <h6>Varav Moms</h6>
+                </td>
                 <td></td>
-                <td><h4>@Model.Sum.ToString("n2") kr</h4></td>
+                <td><h4>@Model.Sum.ToString("n2") kr </h4>
+                <h6>@Model.Tax.ToString("n2") kr</h6></td>
             </tr>
         </tfoot>
     </table>

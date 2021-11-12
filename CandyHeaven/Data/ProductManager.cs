@@ -8,6 +8,7 @@ namespace CandyHeaven.Data
 {
     public class ProductManager
     {
+        public static Models.Product Product{ get; set; }
         public static List<Models.Product> Products { get; set; } = GetAllProducts();
         /// <summary>
         /// Method to get all products
@@ -61,6 +62,14 @@ namespace CandyHeaven.Data
         public static void AddProduct(Models.Product productToAdd)
         {
             Products.Add(productToAdd);
+        }
+        public static List<Models.Product> StockChanges(int id)
+
+        {
+            Product = Products.Where(product => product.Id == id).FirstOrDefault();
+            Product.StockQuantity = Product.StockQuantity - 1;
+
+            return Products;
         }
 
     }
