@@ -32,52 +32,54 @@ namespace CandyHeaven.Pages.ShoppingCart
         // ändringar
         [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
-
+        [BindProperty]
         public string Frakt { get; set; }
         [BindProperty]
         public double FraktSum { get; set; }
+        [BindProperty]
+        public bool Confirm { get; set; } = false;
 
 
 
-
+        [BindProperty]
         public double Sum { get; set; }
 
         public void OnGet()
         {
-
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
-            if(Frakt == "DHL")
-            {
-                FraktSum = Sum + 39;
-            }
-            // alternativ
-            //if (radioButton1.Checked = true)
-            //{
 
-            //}
-
-
-            //if (Frakt1.checked == "DHL") 
-            //{
-            //    FraktSum = Sum + 39;
-
-
-            //}
-            
-           
-                //public IActionResult OnPost(name, lastName, email, adress)
-                //{
-                //    Person = Data.PersonManager.GetPerson(name, lastName, email, adress);
-                //    if (ModelState.IsValid == false)
-                //    {
-                //        return Page();
-                //    }
-                //    return RedirectToPage("/Payment", new { Person.Name });
-
-                }
         }
+       
+       
+       
+            
+        public void OnPost()
+
+        {
+                ShoppingCart = Data.ShoppingCartManager.GetProducts();
+                Sum = ShoppingCart.Sum(product => product.Price);
+
+                if (Frakt == "DHL")
+                {
+                    FraktSum = Sum + 39;
+                }
+                if (Frakt == "Instabox")
+                {
+                    FraktSum = Sum + 29;
+                }
+                if (Frakt == "Hämta i butik")
+                {
+                    FraktSum = Sum + 0;
+                }
+            
+          
+
+        }
+
+
     }
+}
 
 
 

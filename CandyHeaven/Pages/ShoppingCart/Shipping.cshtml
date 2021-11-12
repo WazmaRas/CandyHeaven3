@@ -36,7 +36,7 @@
     </table>
 </form>
 
-<form asp-page="/shoppingcart/Payment"  method="post">
+<form method="post">
 
     <table class="table">
         <thead class="thead-dark">
@@ -47,10 +47,10 @@
         </thead>
         <tr>
             <td>
-                Förnamn: <input asp-for="@Model.Name" /><br />
-                Efternamn: <input asp-for="@Model.LastName" /><br />
-                Email:<input asp-for="@Model.Email" /><br />
-                Adress:<input asp-for="@Model.Adress" />
+                Förnamn: <input asp-for="@Model.Name" required /><br />
+                Efternamn: <input asp-for="@Model.LastName" required /><br />
+                Email:<input asp-for="@Model.Email" required /><br />
+                Adress:<input asp-for="@Model.Adress" required />
 
 
                 <p>Välj leveranssätt:</p>
@@ -62,7 +62,7 @@
                 <label for="InstaBox">Instabox</label><br>
 
 
-                <input type="radio" asp-for="@Model.Frakt" value="Hänta i butik">
+                <input type="radio" asp-for="@Model.Frakt" value="Hämta i butik">
                 <label for="Butik">Hämta i butik</label>
                 <h4>@Model.FraktSum.ToString("n2") kr</h4>
 
@@ -89,8 +89,10 @@
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-outline-dark btn-lg" href="Payment" role="button" value="FORTSÄTT"></input>
+                <input type="submit" class="btn btn-outline-dark btn-lg" href="Shipping" role="button" value="BEKRÄFTA"></input>
+                <input type="submit" class="btn btn-outline-dark btn-lg" href="OrderSuccessful" role="button" value="Forsätt"></input>
             </td>
         </tr>
     </table>
 </form>
+
