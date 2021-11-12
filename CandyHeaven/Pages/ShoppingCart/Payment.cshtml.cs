@@ -12,17 +12,19 @@ namespace CandyHeaven.Pages.ShoppingCart
     {
         [BindProperty (SupportsGet =true)]
         public string Name { get; set; }
+        [BindProperty]
+        public string Frakt { get; set; }
 
 
-        public int Dhl { get; set; }
+
         public void OnGet(int dhl)
         {
             
             
         }
-        public void OnPost(int dhl)
+        public void OnPost()
         {
-            Dhl = dhl;
+          
         }
     }
 }

@@ -35,7 +35,8 @@
         </tfoot>
     </table>
 </form>
-<form action="/ShoppingCart/Payment"  method="post">
+
+<form asp-page="/shoppingcart/Payment"  method="post">
 
     <table class="table">
         <thead class="thead-dark">
@@ -54,22 +55,23 @@
 
                 <p>Välj leveranssätt:</p>
 
-                <input type="radio" id="frakt" name="frakt" value="">
-                <label for="html">DHL Express</label><br>
+                <input type="radio" asp-for="@Model.Frakt" value="DHL">
+                <label for="DHL">DHL Express</label><br>
 
-                <input type="radio" id="css" name="frakt" value="CSS">
-                <label for="css">Instabox</label><br>
+                <input type="radio" asp-for="@Model.Frakt" value="Instabox">
+                <label for="InstaBox">Instabox</label><br>
 
 
-                <input type="radio" id="javascript" name="frakt" value="JavaScript">
-                <label for="javascript">Hämta i butik</label>
-                <a asp-for="Payment" asp-route-id="39"></a>
+                <input type="radio" asp-for="@Model.Frakt" value="Hänta i butik">
+                <label for="Butik">Hämta i butik</label>
+                <h4>@Model.FraktSum.ToString("n2") kr</h4>
+
 
                 <p>
 
 
                     <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Välj Levrans sätt
+                        Välj Betalningssätt
                     </button>
                 </p>
                 <div class="collapse" id="collapseExample">
@@ -79,9 +81,9 @@
                         <input type="radio" id="html" name="fav_language" value="HTML">
                         <label for="html">VISA/MasterCard</label><br>
                         <input type="radio" id="css" name="fav_language" value="Fakturabetalning">
-                        <label for="css">Instabox</label><br>
+                        <label for="css">Klarna</label><br>
                         <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                        <label for="javascript">Hämta i butik</label>
+                        <label for="javascript">Swish</label>
 
 
                     </div>

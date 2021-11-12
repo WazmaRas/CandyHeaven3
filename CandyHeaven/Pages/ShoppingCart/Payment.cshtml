@@ -3,14 +3,15 @@
 @{
 }
 
-<p>@Model.Name</p>
+<p>@Model.Name @Model.Frakt</p>
+
 
 <h1>Välj betalsätt</h1>
 
 <form action="/ShoppingCart/Payment">
 
 
-    <input type="radio" id="html" name="fav_language" value="HTML">
+    <input type="radio" id="html" name="fav_language" value="">
     <label for="html">VISA/MasterCard</label><br>
     <input type="radio" id="css" name="fav_language" value="Fakturabetalning">
     <label for="css">Instabox</label><br>
