@@ -35,15 +35,14 @@ namespace CandyHeaven.Pages._Admin
         [BindProperty]
         [Required]
         public string CandySort { get; set; }
-        public List<Models.Product> AllProducts { get; set; } = Data.ProductManager.Products;
-        public void OnPost()
+        public void OnPost(int id)
         {
             Models.Product newProduct = new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort );
 
             Data.ProductManager.AddProduct(newProduct);
-     
 
-            //16, "Eget påhitt", "Ihoprullade godisremsor med mumsig jordgubbssmak att köpa hem lagom till storkalaset eller om du vill bunkra upp med massa godis så du har för ett par fredagsmystillfällen framöver.", false, 99.00, "https://www.barnorama.com/wp-content/uploads/2019/04/Funny-Pictures-1982-98.jpg", 25, "fantasiska ingrediens"KC
+           
+
         }
     }
 }
