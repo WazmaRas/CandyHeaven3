@@ -35,6 +35,8 @@ namespace CandyHeaven.Pages.ShoppingCart
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             ItemsInCart = ShoppingCart.Count == 1 ? "Vara" : "Varor";
             Sum = ShoppingCart.Sum(product => product.Price);
-        }  
+        }
+        
+       
     }
 }

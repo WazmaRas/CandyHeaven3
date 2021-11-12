@@ -3,100 +3,146 @@
 @{
 }
 
+<div class="row mt-3 mx-3" style="margin-top:25px ;">
+    <div class="col-md-3">
+        <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
+            <i id="animationDemo" data-mdb-animation="slide-right" data-mdb-toggle="animation"
+               data-mdb-animation-reset="true" data-mdb-animation-start="onScroll"
+               data-mdb-animation-on-scroll="repeat" class="fas fa-3x fa-shipping-fast text-white"></i>
+            <h3 class="mt-3 text-white">Welcome</h3>
+            <p class="white-text">Du är 30 sekunder från att slutföra din order!</p>
+        </div>
+        <div class="text-center">
+            <button type="submit" href="CandyShop" class="btn btn-white btn-rounded back-button">Gå Tillbaka</button>
+        </div>
 
 
-<form method="post">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th colspan="2">Produkt</th>
-                <th class="text-center">Antal</th>
-                <th>Summa</th>
-            </tr>
-        </thead>
-        @foreach (var product in Model.ShoppingCart)
-        {
-            <tr>
-                <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
-                <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
-                <td>
-                    <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
-                    <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
+    </div>
+    <div class="col-md-9 justify-content-center">
+        <div class="card card-custom pb-4">
+            <div class="card-body mt-0 mx-5">
+                <div class="text-center mb-3 pb-2 mt-3">
+                    <h4 style="color: #495057 ;">Delivery Details</h4>
+                </div>
 
-                </td>
-                @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
-                <td>@product.Price.ToString("n2") kr</td>
-            </tr>
-        }
-        <tfoot>
-            <tr>
-                <td colspan="2"><h4>Totala summan: <br />Inkl. Frakt och Moms</h4></td>
-                <td></td>
-                <td><h4>@(Model.FraktSum == 0? @Model.Sum.ToString("n2") : @Model.FraktSum.ToString("n2")) kr</h4></td>
-            </tr>
-        </tfoot>
-    </table>
-    
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Leveranssätt</th>
-                <th>Pris</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>
-                Förnamn: <input asp-for="@Model.Name" required /><br />
-                Efternamn: <input asp-for="@Model.LastName" required /><br />
-                Email:<input asp-for="@Model.Email" required /><br />
-                Adress:<input asp-for="@Model.Adress" required />
+                <form method="post" class="mb-0">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th colspan="2">Produkt</th>
+                                <th class="text-center">Antal</th>
+                                <th>Summa</th>
+                            </tr>
+                        </thead>
+                        @foreach (var product in Model.ShoppingCart)
+                        {
+                            <tr>
+                                <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
+                                <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
+                                <td>
+                                    <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
+                                    <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
+
+                                </td>
+                                @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
+                                <td>@product.Price.ToString("n2") kr</td>
+                            </tr>
+                        }
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"><h4>Totala summan: <br />Inkl. Frakt och Moms</h4></td>
+                                <td></td>
+                                <td><h4>@(Model.FraktSum == 0? @Model.Sum.ToString("n2") : @Model.FraktSum.ToString("n2")) kr</h4></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input asp-for="@Model.Name" class="form-control input-custom" required />
+                                <label class="form-label" for="form9Example1">First name</label>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input asp-for="@Model.LastName" class="form-control input-custom" required />
+                                <label class="form-label" for="form9Example2">Last name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input asp-for="@Model.Email" class="form-control input-custom" required />
+                                <label class="form-label" for="typeEmail">Email</label>
+
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input asp-for="@Model.Adress" class="form-control input-custom" />
+                                    <label class="form-label" for="form9Example4">Adress</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    <p>Välj leveranssätt:</p>
+
+                                    <input type="radio" asp-for="@Model.Frakt" value="DHL" required>
+                                    <label for="DHL">DHL Express</label><br>
+
+                                    <input type="radio" asp-for="@Model.Frakt" value="Instabox">
+                                    <label for="InstaBox">Instabox</label><br>
 
 
-                <p>Välj leveranssätt:</p>
+                                    <input type="radio" asp-for="@Model.Frakt" value="Hämta i butik">
+                                    <label for="Butik">Hämta i butik</label>
 
-                <input type="radio" asp-for="@Model.Frakt" value="DHL" required>
-                <label for="DHL">DHL Express</label><br>
+                                    <p>Välj betalningssätt:</p>
+                                    <input type="radio" name="Payment" value="" required>
+                                    <label for="VISA/MasterCard">VISA/MasterCard</label><br>
+                                    <input type="radio" name="Payment" value="Klarna">
+                                    <label for="Klarna">Klarna</label><br>
+                                    <input type="radio" name="Payment" value="JavaScript">
+                                    <label for="Swish">Swish</label>
 
-                <input type="radio" asp-for="@Model.Frakt" value="Instabox">
-                <label for="InstaBox">Instabox</label><br>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="float-end ">
+                            <!-- Submit button -->
+                            <button onclick="confirmation()" type="submit" @*asp-route-confirm="true"*@ class="btn btn-primary btn-rounded" href="Shipping"
+                                    style="background-color: #0062CC ;">
+                                BEKTÄFTA UPPIGIFTER
+                            </button>
+                            <script>
+                                function confirmation() {
+                                    <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="/OrderSuccessful" role="button">Place order</a>
+                                }
+                            </script>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-                <input type="radio" asp-for="@Model.Frakt" value="Hämta i butik">
-                <label for="Butik">Hämta i butik</label>
+@*@if ( @Model.Confirm == true)
+{
+    <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="OrderSuccessful" role="button">FORSÄTT</a>
+
+}*@
 
 
 
-                <p>
 
 
-                    <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Välj Betalningssätt
-                    </button>
-                </p>
-                @*<div class="collapse" id="collapseExample">
-                    <div class="card card-body">*@
 
-
-                <input type="radio" id="html" name="Payment" value="HTML" required>
-                <label for="html">VISA/MasterCard</label><br>
-                <input type="radio" id="css" name="Payment" value="Fakturabetalning">
-                <label for="css">Klarna</label><br>
-                <input type="radio" id="javascript" name="Payment" value="JavaScript">
-                <label for="javascript">Swish</label>
-
-
-                <!--<-->@*/div>
-                    </div*@<!-->-->
-
-                <input type="submit" class="btn btn-outline-dark btn-lg" href="Shipping" role="button" value="BEKRÄFTA UPPGIFTERNA">
-
-            </td>
-        </tr>
-    </table>
-</form>
-  <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="OrderSuccessful" role="button">FORSÄTT</a>
- 
-
-     
- 
 

@@ -44,17 +44,20 @@ namespace CandyHeaven.Pages.ShoppingCart
         [BindProperty]
         public double Sum { get; set; }
 
-        public void OnGet()
+        public void OnGet(string confirm)
         {
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
+            
+
 
         }
+
        
        
        
             
-        public void OnPost()
+        public void OnPost(string confirm)
 
         {
                 ShoppingCart = Data.ShoppingCartManager.GetProducts();
@@ -72,8 +75,9 @@ namespace CandyHeaven.Pages.ShoppingCart
                 {
                     FraktSum = Sum + 0;
                 }
-            
-          
+
+           
+
 
         }
 
