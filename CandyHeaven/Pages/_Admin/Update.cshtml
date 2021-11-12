@@ -2,3 +2,19 @@
 @model CandyHeaven.Pages._Admin.UpdateModel
 @{
 }
+
+<form method="post">
+
+    <input asp-for="@Model.Changes" class="form-control input-custom" required />
+    <label class="form-label" for="form9Example1">First name</label>
+    <button type="submit" asp-for="" class="btn btn-primary btn-rounded"
+            style="background-color: #0062CC ;">
+        Submit
+    </button>
+    @foreach (var item in Model.Products)
+    {
+        @item.Name
+        <p>----------</p>
+    }
+</form>
+

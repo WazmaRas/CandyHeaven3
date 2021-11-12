@@ -81,6 +81,13 @@ namespace CandyHeaven.Data
 
             return Products;
         }
+        public static List<Models.Product> UpdateProduct(int id, string changes)
+        {
+            Product = Products.Where(product => product.Id == id).FirstOrDefault();
+            Product.Name = changes;
+
+            return Products;
+        }
 
     }
 }
