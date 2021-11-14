@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CandyHeaven.Pages
 {
-    public class SortByPriceModel : PageModel
+    public class SortByNameModel : PageModel
     {
+
         public List<Models.Product> Products { get; set; }
         public List<Models.Product> Result { get; set; }
         public List<Models.Product> ShopCart { get; set; }
@@ -18,15 +19,16 @@ namespace CandyHeaven.Pages
 
         public void OnGet(int id)
         {
+            
             Products = Data.ProductManager.Search(SearchTerm);
-            Result = Products.OrderBy(prod => prod.Price).ToList();
+            Result = Products.OrderBy(prod => prod.Name).ToList();
 
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);
 
             }
-           
+
 
         }
     }

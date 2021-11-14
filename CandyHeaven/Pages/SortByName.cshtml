@@ -1,29 +1,16 @@
 ﻿@page
-@model IndexModel
+@model CandyHeaven.Pages.SortByNameModel
 @{
-    ViewData["Title"] = "Home page";
 }
+<form method="get">
+    <div class="input-group">
+        <input class="form-check form-control" asp-for="SearchTerm" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Sök</button>
+        </div>
+    </div>
+</form>
 
-<nav class="navbar navbar-expand-md navbar-light">
-
-    <a class="navbar-brand" href="#!">
-        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
-    </a>
-
-
-</nav>
-<div style="background-color: #A4FFF5 " class="jumbotron">
-    <h1 class="display-4">Candy Heaven</h1>
-    <p style="font-family: 'Lobster', cursive;" class="lead">Make life a little sweeter</p>
-    <hr class="my-4">
-    @*<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>*@
-    <p class="lead">
-        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="/CandyShop" role="button">Shoppa mer</a>
-        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="/ListOfBars" role="button">Bars</a>
-        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="/CandyBag" role="button">Godispåsar</a>
-        <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="/BulkCandy" role="button">Pick</a>
-    </p>
-</div>
 <div class="row">
     @foreach (var prod in Model.Products)
     {
@@ -35,9 +22,8 @@
                     <h5 class="card-title">@prod.Name</h5>
 
                     <h6>@prod.Price.ToString("n2") kr</h6>
+                    <h6>@prod.StockQuantity</h6>
                     <p>
-
-
                         <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
@@ -52,14 +38,12 @@
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6> Finns på lager : @prod.StockQuantity</h6>
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
                                 <h6> Ej på lager</h6>
                             }
-
-
                         </div>
                     </div>
 
@@ -76,9 +60,8 @@
                     <h5 class="card-title">@prod.Name</h5>
 
                     <h6>@prod.Price.ToString("n2") kr</h6>
+                    <h6>@prod.StockQuantity</h6>
                     <p>
-
-
                         <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
@@ -94,7 +77,7 @@
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6> Finns på lager : @prod.StockQuantity</h6>
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
@@ -116,10 +99,9 @@
                 <div class="card-body">
                     <h5 class="card-title">@prod.Name</h5>
 
-                    <h6>@prod.Price.ToString("n2") kr</h6>
+                    <h6>@prod.Price.ToString("n2")kr</h6>
+                    <h6>@prod.StockQuantity</h6>
                     <p>
-
-
                         <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
@@ -134,7 +116,7 @@
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6> Finns på lager : @prod.StockQuantity</h6>
+                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
@@ -142,11 +124,11 @@
                             }
                         </div>
                     </div>
-
                     <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
 
                 </div>
             </div>
         }
     }
+
 </div>
