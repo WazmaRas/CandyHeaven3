@@ -41,7 +41,7 @@ namespace CandyHeaven.Pages._Admin
         public void OnGet(int id)
         {
 
-            if (id != null)
+            if (id != 0)
             {
                 Products = Data.ProductManager.DeleteProduct(id);
 

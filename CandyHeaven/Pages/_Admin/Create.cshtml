@@ -2,23 +2,28 @@
 @model CandyHeaven.Pages._Admin.CreateModel
 @{
 }
-<form method="post">
-    <h1>Välj Kategori</h1>
-    <br />
-    <input type="radio" asp-for="@Model.Category" value="Bar" required>
-    <label for="Catogory">Bar</label>
-    <br>
-    <input type="radio" asp-for="@Model.Category" value="CandyBag">
-    <label for="Catogory">Godispåse</label>
-    <br>
-    <input type="radio" asp-for="@Model.Category" value="BulkCandy">
-    <label for="Catogory">Lösvikt</label>
-    <br />
-    <input type="radio" asp-for="@Model.Category" value="Produkt">
-    <label for="Catogory">Produkt</label>
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="row">
+    <form method="post">
+        <div class="col-4">
+            <h1>Välj Kategori</h1>
+            <br />
+            <input type="radio" asp-for="@Model.Category" value="Bar" required>
+            <br />
+            <label for="Category">Bar</label>
+            <br>
+            <input type="radio" asp-for="@Model.Category" value="CandyBag">
+            <label for="Category">Godispåse</label>
+            <br>
+            <input type="radio" asp-for="@Model.Category" value="BulkCandy">
+            <label for="Category">Lösvikt</label>
+            <br />
+            <input type="radio" asp-for="@Model.Category" value="Produkt">
+            <label for="Category">Produkt</label>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
 
 @if (Model.Category != null)
 {
@@ -26,8 +31,6 @@
     {
         case "Bar":
             <form method="post">
-                <label class="form-label">ID</label>
-                <input asp-for="@Model.Id" class="form-control input-custom" placeholder="Produkt ID" required />
                 <div class="form-group">
                     <label class="form-label">Namn</label>
                     <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
@@ -38,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Syns på hemsidan</label>
-                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Pris</label>
@@ -50,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Lagersaldo</label>
-                    <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+                    <input asp-for="@Model.Stock" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Smak</label>
@@ -63,10 +66,6 @@
         case "CandyBag":
             <form method="post">
                 <div class="form-group">
-                    <label class="form-label">ID</label>
-                    <input asp-for="@Model.Id" class="form-control input-custom" placeholder="Produkt ID" required />
-                </div>
-                <div class="form-group">
                     <label class="form-label">Namn</label>
                     <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
                 </div>
@@ -76,11 +75,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Syns på hemsidan</label>
-                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Pris</label>
-                    <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+                    <input asp-for="@Model.Price" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Bild</label>
@@ -88,11 +87,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Lagersaldo</label>
-                    <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+                    <input asp-for="@Model.Stock" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Vikt</label>
-                    <input asp-for="@Model.Weight" class="form-control input-custom" placeholder="sort" required />
+                    <input asp-for="@Model.Weight" class="form-control input-custom"required />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -110,11 +109,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Syns på hemsidan</label>
-                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Pris</label>
-                    <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+                    <input asp-for="@Model.Price" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Bild</label>
@@ -122,11 +121,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Lagersaldo</label>
-                    <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+                    <input asp-for="@Model.Stock" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Smak</label>
-                    <input asp-for="@Model.CandySort" class="form-control input-custom" placeholder="sort" required />
+                    <input asp-for="@Model.CandySort" class="form-control input-custom" placeholder="Smak" required />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -148,7 +147,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="form9Example2">Pris</label>
-                    <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+                    <input asp-for="@Model.Price" class="form-control input-custom"required />
                 </div>
                 <div class="form-group">
                     <label class="form-label">Bild</label>
@@ -156,7 +155,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Lagersaldo</label>
-                    <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+                    <input asp-for="@Model.Stock" class="form-control input-custom"required />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

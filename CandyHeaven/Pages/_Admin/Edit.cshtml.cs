@@ -40,7 +40,7 @@ namespace CandyHeaven.Pages._Admin
 
         public void OnGet(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
@@ -48,7 +48,7 @@ namespace CandyHeaven.Pages._Admin
         }   
         public void OnPost(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
