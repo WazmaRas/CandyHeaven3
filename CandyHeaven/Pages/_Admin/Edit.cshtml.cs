@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CandyHeaven.Pages._Admin
 {
-    public class IndexModel : PageModel
+    public class EditModel : PageModel
     {
-        public List<Models.Product> Products = Data.ProductManager.Products;
-        [BindProperty]
-        [Required]
-        public int Id { get; set; }
+        public List<Models.Product> Products { get; set; } = Data.ProductManager.Products;
+        public Models.Product Product { get; set; }
+
+   
         [BindProperty]
         [Required]
         public string Name { get; set; }
@@ -36,19 +36,23 @@ namespace CandyHeaven.Pages._Admin
         [Required]
         public string CandySort { get; set; }
 
-
+        public int Id { get; set; }
 
         public void OnGet(int id)
         {
-
             if (id != null)
             {
-                Products = Data.ProductManager.DeleteProduct(id);
+                Product = Products.Where(product => product.Id == id).FirstOrDefault();
+            }
 
+        }   
+        public void OnPost(int id)
+        {
+            if (id != null)
+            {
+                Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
 
         }
-
     }
 }
-
