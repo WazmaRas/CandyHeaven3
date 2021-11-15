@@ -35,15 +35,19 @@ namespace CandyHeaven.Pages._Admin
         [BindProperty]
         [Required]
         public string CandySort { get; set; }
+
         
 
-        public void OnPost(int id)
+        public void OnGet( int delete)
         {
-            Models.Product newProduct = new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort );
-
-            Data.ProductManager.AddProduct(newProduct);
-
             
+
+            if (delete != 0)
+            {
+               Products=Data.ProductManager.DeleteProduct(delete);
+
+
+            }
 
 
 

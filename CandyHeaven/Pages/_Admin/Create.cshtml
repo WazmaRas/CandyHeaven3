@@ -21,8 +21,8 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-@if (Model.Catogory != null)
-{
+@*@if (Model.Catogory != null)*@
+
     @switch (Model.Catogory)
     {
         case "Bar":
@@ -188,7 +188,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="form9Example2">Syns på hemsidan</label>
-                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten"  />
 
                 </div>
                 <div class="form-group">
@@ -216,7 +216,7 @@
 
             </form>
             break;
-    }
+    
 
 }
 
