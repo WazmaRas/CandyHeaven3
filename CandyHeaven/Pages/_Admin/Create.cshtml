@@ -2,69 +2,133 @@
 @model CandyHeaven.Pages._Admin.CreateModel
 @{
 }
-<h1>Välj Kategori</h1>
-<input type="radio" asp-for="@Model.Catogory" value="Bar" required>
-<label for="Catogory">Bars</label>
-<br>
+<form method="post">
+    <h1>Välj Kategori</h1>
+    <input type="radio" asp-for="@Model.Catogory" value="Bar" required>
+    <label for="Catogory">Bars</label>
+    <br>
 
-<input type="radio" asp-for="@Model.Catogory" value="CandyBag">
-<label for="Catogory">Godis Påsar</label>
-<br>
+    <input type="radio" asp-for="@Model.Catogory" value="CandyBag">
+    <label for="Catogory">Godis Påsar</label>
+    <br>
 
 
-<input type="radio" asp-for="@Model.Catogory" value="BulkCandy">
-<label for="Catogory">Lösvikt</label>
+    <input type="radio" asp-for="@Model.Catogory" value="BulkCandy">
+    <label for="Catogory">Lösvikt</label>
 
-<input type="radio" asp-for="@Model.Catogory" value="Okänd">
-<label for="Catogory">Okänd</label>
-@switch (value)
+    <input type="radio" asp-for="@Model.Catogory" value="Produkt">
+    <label for="Catogory">Produkt</label>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model.Catogory != null)
 {
-    case "Bar":
-        <form method="post">
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Namn</label>
-                <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
+    @switch (Model.Catogory)
+    {
+        case "Bar":
+<form method="post">
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Beskrivning</label>
-                <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
+    div class="form-group">
+    <label class="form-label" for="form9Example2">ID</label>
+    <input asp-for="@Model.Id" class="form-control input-custom" placeholder="Produkt ID" required />
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Syns på hemsidan</label>
-                <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Namn</label>
+        <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Pris</label>
-                <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Beskrivning</label>
+        <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Bild</label>
-                <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Syns på hemsidan</label>
+        <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Lagersaldo</label>
-                <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Pris</label>
+        <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
 
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Bild</label>
+        <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
 
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="form9Example2">Smak</label>
-                <input asp-for="@Model.Taste" class="form-control input-custom" placeholder="sort" required />
-
-            </div>
-
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Lagersaldo</label>
+        <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
 
 
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Smak</label>
+        <input asp-for="@Model.Taste" class="form-control input-custom" placeholder="Smak på produkten" required />
+        </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
 
-        </form>
+
+
+        <button href="Index" type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+            break;
         case "CandyBag":
+<form method="post">
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">ID</label>
+        <input asp-for="@Model.Id" class="form-control input-custom" placeholder="Produkt ID" required />
+
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Namn</label>
+        <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Beskrivning</label>
+        <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Syns på hemsidan</label>
+        <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Pris</label>
+        <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Bild</label>
+        <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Lagersaldo</label>
+        <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+
+
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="form9Example2">Vikt</label>
+        <input asp-for="@Model.Weight" class="form-control input-custom" placeholder="sort" required />
+
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+            break;
+
+        case "BulkCandy":
             <form method="post">
                 <div class="form-group">
                     <label class="form-label" for="form9Example2">Namn</label>
@@ -99,9 +163,51 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="form9Example2">Smak</label>
-                    <input asp-for="@Model.Weight" class="form-control input-custom" placeholder="sort" required />
+                    <input asp-for="@Model.CandySort" class="form-control input-custom" placeholder="sort" required />
 
                 </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+            break;
+
+
+
+        case "Produkt":
+            <form method="post">
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Namn</label>
+                    <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Beskrivning</label>
+                    <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Syns på hemsidan</label>
+                    <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Pris</label>
+                    <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Bild</label>
+                    <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="form9Example2">Lagersaldo</label>
+                    <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
+
+
+                </div>
+
 
 
 
@@ -109,100 +215,18 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
 
             </form>
+            break;
+    }
 
-            case "BulkCandy":
-<form method="post">
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Namn</label>
-        <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Beskrivning</label>
-        <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Syns på hemsidan</label>
-        <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Pris</label>
-        <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Bild</label>
-        <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Lagersaldo</label>
-        <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
-
-
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="form9Example2">Smak</label>
-        <input asp-for="@Model.CandySort" class="form-control input-custom" placeholder="sort" required />
-
-    </div>
-
-    default:
-    <p></p>
-
-
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
-
-
-
-            case "Okänd":
-                    <form method="post">
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Namn</label>
-                            <input asp-for="@Model.Name" class="form-control input-custom" placeholder="Namn på produkten" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Beskrivning</label>
-                            <input asp-for="@Model.Description" class="form-control input-custom" placeholder="Beskrivning av produkten" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Syns på hemsidan</label>
-                            <input asp-for="@Model.Featured" class="form-control input-custom" placeholder="Synlighet av produkten" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Pris</label>
-                            <input asp-for="@Model.Price" class="form-control input-custom" placeholder="Pris på produkten" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Bild</label>
-                            <input asp-for="@Model.ImageURL" class="form-control input-custom" placeholder="Bild på produkten" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="form9Example2">Lagersaldo</label>
-                            <input asp-for="@Model.Stock" class="form-control input-custom" placeholder="Lagersaldo av produkten" required />
-
-
-                        </div>
+}
 
 
 
 
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
 
-                    </form>
-                    break;
-            }
+
+
 
 
 
