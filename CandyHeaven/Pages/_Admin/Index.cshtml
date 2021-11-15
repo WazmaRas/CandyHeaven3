@@ -10,44 +10,50 @@
             </tr>
         </thead>
         <tr>
-            <td>ID nummer<input asp-for="@Model.Id" required /></td>
-            <td>Namn<input asp-for="@Model.Name" required/></td>
-            <td>Beskrivning<input asp-for="@Model.Description" required/></td>
-            <td>Syns på hemsidan<input asp-for="@Model.Featured"/></td>
-            <td>Pris<input asp-for="@Model.Price" required/></td>
-            <td>Bildväg<input asp-for="@Model.ImageURL" required/></td>
-            <td>Lagersaldo<input asp-for="@Model.Stock" required/></td>
-            <td>Lagersaldo<input asp-for="@Model.CandySort" required/></td>
+            @*<td>ID nummer<input asp-for="@Model.Id" required /></td>*@
+            <td>Namn<input asp-for="@Model.Name" required /></td>
+            <td>Beskrivning<input asp-for="@Model.Description" required /></td>
+            <td>Syns på hemsidan<input asp-for="@Model.Featured" /></td>
+            <td>Pris<input asp-for="@Model.Price" required /></td>
+            <td>Bildväg<input asp-for="@Model.ImageURL" required /></td>
+            <td>Lagersaldo<input asp-for="@Model.Stock" required /></td>
+            <td>Lagersaldo<input asp-for="@Model.CandySort" required /></td>
         </tr>
 
     </table>
     <br /> <button type="submit"></button>
 
 </form>
+<a asp-page="Create" class="btn btn-outline-dark">Create</a>
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th>Id</th>
+            @*<th>Id</th>*@
             <th>Namn</th>
-            <th>Beskrivning</th>
-            <th>Synlighet</th>
+            @*<th>Beskrivning</th>
+                <th>Synlighet</th>*@
             <th>Pris</th>
-            <th>Bildväg</th>
+            @*<th>Bildväg</th>*@
             <th>Lagersaldo</th>
         </tr>
     </thead>
     @foreach (var product in Model.Products)
     {
 
-        <tr>
-            <td>@product.Id</td>
-            <td>@product.Name</td>
-            <td>@product.ProductInfo</td>
-            <td>@product.Featured</td>
-            <td>@product.Price</td>
-            <td>@product.ImageURL</td>
-            <td>@product.StockQuantity</td>
-        </tr>
+<tr>
+    @*<td>@product.Id</td>*@
+    <td>@product.Name</td>
+    @*<td>@product.ProductInfo</td>
+        <td>@product.Featured</td>*@
+    <td>@product.Price</td>
+    @*<td>@product.ImageURL</td>*@
+    <td>@product.StockQuantity</td>
+    <td> <a asp-page="Update" asp-route-Edit="@product.Id" class="btn btn-outline-dark">Edit</a></td>
+    <td><a asp-page="Index" asp-route-id="@product.Id" class="btn btn-outline-dark">Delete</a></td>
+    <td><a asp-page="Details" asp-route-id="@product.Id" class="btn btn-outline-dark">Details</a></td>
+
+
+</tr>
     }
 
 </table>
