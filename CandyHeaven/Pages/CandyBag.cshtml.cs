@@ -19,10 +19,7 @@ namespace CandyHeaven.Pages
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);
-
             }
-
-
         }
     }
 }

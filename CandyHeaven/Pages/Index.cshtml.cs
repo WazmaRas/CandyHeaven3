@@ -18,12 +18,10 @@ namespace CandyHeaven.Pages
             Products = Data.ProductManager.GetAllProducts();
             var chosenProducts = Products.Where(product => product.Featured == true).ToList();
             Products = chosenProducts;
-
-
+            
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);
-
             }
         }
     }

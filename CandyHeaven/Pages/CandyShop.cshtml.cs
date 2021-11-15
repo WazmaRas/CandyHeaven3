@@ -16,22 +16,14 @@ namespace CandyHeaven.Pages
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
         
-
         public void OnGet(int id)
         {
-
-
             Products = Data.ProductManager.Search(SearchTerm);
            
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);
-
             }
-            
-
-
         }
-        
     }
 }

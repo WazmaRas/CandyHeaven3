@@ -25,22 +25,14 @@ namespace CandyHeaven.Pages.ShoppingCart
         [BindProperty]
         [Required]
         public string Adress { get; set; }
-        [BindProperty]
-        public string PaymentMethod { get; set; }
-
-        public Models.Person Person { get; set; }
-        // ändringar
+      
         [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
         [BindProperty]
         public string Frakt { get; set; }
         [BindProperty]
         public double FraktSum { get; set; }
-        [BindProperty]
-        public bool Confirm { get; set; } = false;
-
-
-
+     
         [BindProperty]
         public double Sum { get; set; }
 
@@ -48,15 +40,8 @@ namespace CandyHeaven.Pages.ShoppingCart
         {
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
-            
-
-
         }
-
-       
-       
-       
-            
+ 
         public void OnPost(string confirm)
 
         {
@@ -75,13 +60,7 @@ namespace CandyHeaven.Pages.ShoppingCart
                 {
                     FraktSum = Sum + 0;
                 }
-
-           
-
-
         }
-
-
     }
 }
 

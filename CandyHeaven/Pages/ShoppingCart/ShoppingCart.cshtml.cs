@@ -11,16 +11,11 @@ namespace CandyHeaven.Pages.ShoppingCart
     {
         public List<Models.Product> ShoppingCart { get; set; }
         public string ItemsInCart { get; set; }
-
         public double Sum { get; set; }
         public double Tax { get; set; } = 0.12;
         
-
-
-
         /// <summary>
         /// ShoppingCart tilldelas värde av produkterna som finns i varukorgen i ShoppingCartManagern.
-        ///
         /// </summary>
         /// <param name="addId"></param>
         /// <param name="removeId"></param>
@@ -38,9 +33,6 @@ namespace CandyHeaven.Pages.ShoppingCart
             ItemsInCart = ShoppingCart.Count == 1 ? "Vara" : "Varor";
             Sum = ShoppingCart.Sum(product => product.Price);
             Tax = Sum * Tax;
-
         }
-        
-       
     }
 }
