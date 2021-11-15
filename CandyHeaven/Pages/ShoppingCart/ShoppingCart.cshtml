@@ -19,6 +19,7 @@
         @foreach (var product in Model.ShoppingCart)
         {
             <tr>
+                @product.cartQuantity
                 <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
                 <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
                 <td>
@@ -43,12 +44,13 @@
     </table>
 </form>
 
+<div class="row">
+    <div class="float-right">
+        @if (@Model.Sum > 0)
+        {
+            <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
 
-<div class="flex-row float-right">
-    @if (@Model.Sum > 0)
-    {
-        <a class="btn btn-outline-dark btn-lg" href="Shipping" role="button">FORTSÄTT</a>
+        }
 
-    }
-
+    </div>
 </div>

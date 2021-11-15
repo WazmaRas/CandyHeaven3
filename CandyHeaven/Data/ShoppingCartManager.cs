@@ -21,6 +21,14 @@ namespace CandyHeaven.Data
             {
                 ShopCart = new List<Models.Product>();
             }
+            //foreach (var item in ShopCart)
+            //{
+            //    if (item.Id > 1)
+            //    {
+            //        item.cartQuantity++;
+            //    }
+            //}
+          
 
             return ShopCart;
         }
