@@ -42,23 +42,16 @@ namespace CandyHeaven.Pages._Admin
         [Required]
         public string CandySort { get; set; }
         [BindProperty]
-        public string Catogory { get; set; }
+        public string Category { get; set; }
 
-
-        public void OnPost(int id)
+        public void OnPost()
         {
             Models.Product newProduct = new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort);
+            if (Name != null)
+            {
+                Data.ProductManager.AddProduct(newProduct);
 
-            Data.ProductManager.AddProduct(newProduct);
-
-            
-
-
-
-
-
-
-
+            }
         }
     }
 }
