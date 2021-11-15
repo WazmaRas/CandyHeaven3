@@ -42,21 +42,21 @@
                     <h6>@prod.Price.ToString("n2") kr</h6>
                     
                     <p>
-                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
                     </p>
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             @prod.ProductInfo
-                            <h6 style="font-family:'Lobster', cursive; ">
+                            <h6>
                                 Godis Sort :
                                 @(((Models.BulkCandy)prod).CandySort)
                             </h6>
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
+                                <h6> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
                 </div>
             </div>
         }
@@ -80,7 +80,7 @@
                     <h6>@prod.Price.ToString("n2") kr</h6>
                    
                     <p>
-                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
                     </p>
@@ -88,14 +88,14 @@
                         <div class="card card-body">
                             @prod.ProductInfo
                             <p></p>
-                            <h6 style="font-family:'Lobster', cursive; ">
+                            <h6>
                                 Bar smak:
                                 @(((Models.Bar)prod).Taste)
                             </h6>
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
+                                <h6> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
                 </div>
             </div>
         }
@@ -120,21 +120,21 @@
                     <h6>@prod.Price.ToString("n2")kr</h6>
                     
                     <p>
-                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
                     </p>
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             @prod.ProductInfo
-                            <h6 style="font-family: 'Lobster', cursive;">
+                            <h6>
                                 Vikt på påsen:
                                 @(((Models.CandyBag)prod).Weight) gram
                             </h6>
 
                             @if (prod.StockQuantity > 0)
                             {
-                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @prod.StockQuantity</h6>
+                                <h6> Finns på lager : @prod.StockQuantity</h6>
                             }
                             else
                             {
@@ -142,7 +142,7 @@
                             }
                         </div>
                     </div>
-                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
 
                 </div>
             </div>

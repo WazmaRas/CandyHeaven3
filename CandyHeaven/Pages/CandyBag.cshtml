@@ -2,6 +2,8 @@
 @model CandyHeaven.Pages.CandyBagModel
 @{
 }
+
+<h1 text-align: center;>A bite to sweet</h1>
 <form method="get">
     <div class="input-group">
         <input class="form-check form-control" asp-for="SearchTerm" />
@@ -23,23 +25,22 @@
 
                     <h6>@item.Price.ToString("n2") kr</h6>
                     <p>
-
-
-                        <button style="font-family: 'Lobster', cursive;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Mer info
                         </button>
                     </p>
+
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             @item.ProductInfo
-                            <h6 style="font-family: 'Lobster', cursive;">
+                            <h6 >
                                 Vikt på påsen:
                                 @(((Models.CandyBag)item).Weight) gram
                             </h6>
 
                             @if (item.StockQuantity > 0)
                             {
-                                <h6 style="font-family: 'Lobster', cursive;"> Finns på lager : @item.StockQuantity</h6>
+                                <h6 > Finns på lager : @item.StockQuantity</h6>
                             }
                             else
                             {
@@ -48,7 +49,7 @@
                         </div>
                     </div>
 
-                    <a style="font-family: 'Lobster', cursive;" asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a  asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
 
                 </div>
             </div>
