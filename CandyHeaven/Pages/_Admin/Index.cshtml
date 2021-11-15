@@ -35,6 +35,9 @@
             <th>Pris</th>
             @*<th>Bildväg</th>*@
             <th>Lagersaldo</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     @foreach (var product in Model.Products)
@@ -48,8 +51,8 @@
     <td>@product.Price</td>
     @*<td>@product.ImageURL</td>*@
     <td>@product.StockQuantity</td>
-    <td> <a asp-page="Update" asp-route-Edit="@product.Id" class="btn btn-outline-dark">Edit</a></td>
-    <td><a asp-page="Index" asp-route-delete="@product.Id" class="btn btn-outline-dark">Delete</a></td>
+    <td> <a asp-page="Update" asp-route-id="@product.Id" class="btn btn-outline-dark">Edit</a></td>
+    <td><a asp-page="Index" asp-route-id="@product.Id" class="btn btn-outline-dark">Delete</a></td>
     <td><a asp-page="Details" asp-route-id="@product.Id" class="btn btn-outline-dark">Details</a></td>
 
 

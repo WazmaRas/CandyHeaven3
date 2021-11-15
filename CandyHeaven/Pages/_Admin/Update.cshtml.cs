@@ -11,20 +11,18 @@ namespace CandyHeaven.Pages._Admin
 
     {
         public List<Models.Product> Products { get; set; } = Data.ProductManager.Products;
-        public string Changes { get; set; }
-        public void OnGet(int id, string changes)
+        public Models.Product Product { get; set; }
+        public int Id { get; set; }
+
+        public void OnGet(int id)
         {
-            if(id != 0 && Changes != null)
+            if (id != null)
             {
-                Products = Data.ProductManager.UpdateProduct(5,Changes);
+                Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
-        }
-        public void OnPost(int id, string changes)
-        {
-            if (id != 0 && Changes != null)
-            {
-                Products = Data.ProductManager.UpdateProduct(5, Changes);
-            }
+           
+             
+           
         }
 
     }
