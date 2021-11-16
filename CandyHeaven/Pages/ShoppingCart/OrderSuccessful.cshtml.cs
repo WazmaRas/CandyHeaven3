@@ -22,7 +22,6 @@ namespace CandyHeaven.Pages.ShoppingCart
             foreach (var item in ShoppingCart)
             {
                 Products = Data.ProductManager.StockChanges(item.Id);
-
             }
             ShoppingCart = Data.ShoppingCartManager.EmptyCart(ShoppingCart);
             

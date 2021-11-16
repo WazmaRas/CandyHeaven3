@@ -29,9 +29,11 @@ namespace CandyHeaven.Pages.ShoppingCart
         [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
         [BindProperty]
-        public string Frakt { get; set; }
+        public string Shipping { get; set; }
         [BindProperty]
-        public double FraktSum { get; set; }
+        public string Payment { get; set; }
+        [BindProperty]
+        public double ShippingCost { get; set; }
      
         [BindProperty]
         public double Sum { get; set; }
@@ -48,17 +50,17 @@ namespace CandyHeaven.Pages.ShoppingCart
                 ShoppingCart = Data.ShoppingCartManager.GetProducts();
                 Sum = ShoppingCart.Sum(product => product.Price);
 
-                if (Frakt == "DHL")
+                if (Shipping == "DHL")
                 {
-                    FraktSum = Sum + 39;
+                    ShippingCost = Sum + 39;
                 }
-                if (Frakt == "Instabox")
+                if (Shipping == "Instabox")
                 {
-                    FraktSum = Sum + 29;
+                    ShippingCost = Sum + 29;
                 }
-                if (Frakt == "Hämta i butik")
+                if (Shipping == "Hämta i butik")
                 {
-                    FraktSum = Sum + 0;
+                    ShippingCost = Sum + 0;
                 }
         }
     }

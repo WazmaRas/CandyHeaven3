@@ -57,7 +57,7 @@
                         <tr>
                             <td colspan="2"><h4>Totala summan: <br />Inkl. Frakt och Moms</h4></td>
                             <td></td>
-                            <td><h4>@(Model.FraktSum == 0? @Model.Sum.ToString("n2") : @Model.FraktSum.ToString("n2")) kr</h4></td>
+                            <td><h4>@(Model.ShippingCost == 0? @Model.Sum.ToString("n2") : @Model.ShippingCost.ToString("n2")) kr</h4></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -101,46 +101,53 @@
                 </div>
                 <div class="row">
                     <div class="col-1">
-                    <div class="col-2">
-                        <div class="form-outline">
-                            <input type="radio" asp-for="@Model.Frakt" value="DHL" required>
-                            <label for="DHL">DHL Express</label><br>
+                        <div class="col-2">
+                            <div class="form-outline">
+                                <input type="radio" asp-for="@Model.Shipping" value="DHL" required>
+                                <label for="DHL">DHL Express</label><br>
 
-                            <input type="radio" asp-for="@Model.Frakt" value="Instabox">
-                            <label for="InstaBox">Instabox</label><br>
+                                <input type="radio" asp-for="@Model.Shipping" value="Instabox">
+                                <label for="InstaBox">Instabox</label><br>
 
-                            <input type="radio" asp-for="@Model.Frakt" value="Hämta i butik">
-                            <label for="Butik">Hämta i butik</label>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-             
-                    <hr class="my-4">
-
-                    <div class="text-center mb-3 pb-2 mt-3">
-                        <h4 style="color: #495057 ;">Betalsätt</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <div class="col-2">
-                                <div class="form-outline">
-                                    <input type="radio" name="Payment" value="" required>
-                                    <label for="VISA/MasterCard">VISA/MasterCard</label><br>
-                                    <input type="radio" name="Payment" value="Klarna">
-                                    <label for="Klarna">Klarna</label><br>
-                                    <input type="radio" name="Payment" value="JavaScript">
-                                    <label for="Swish">Swish</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-rounded" href="Shipping">BEKRÄFTA UPPGIFTER</button>
+                                <input type="radio" asp-for="@Model.Shipping" value="Hämta i butik">
+                                <label for="Butik">Hämta i butik</label>
                             </div>
                         </div>
                     </div>
-                
-                @if (@Model.Adress != null)
-                {
-                    <a style="font-family: 'Lobster', cursive;" class="btn btn-primary btn-lg" href="OrderSuccessful" role="button">FORTSÄTT</a>
-                }
+                </div>
+
+                <hr class="my-4">
+
+                <div class="text-center mb-3 pb-2 mt-3">
+                    <h4 style="color: #495057 ;">Betalsätt</h4>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <div class="col-2">
+                            <div class="form-outline">
+                                <input type="radio" asp-for="@Model.Payment" value="VISA/MasterCard" required>
+                                <label for="VISA/MasterCard">VISA/MasterCard</label><br>
+                                <input type="radio" asp-for="@Model.Payment" value="Klarna">
+                                <label for="Klarna">Klarna</label><br>
+                                <input type="radio" asp-for="@Model.Payment" value="JavaScript">
+                                <label for="Swish">Swish</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="row">
+                            @if (@Model.Adress != null)
+                            {
+                                <a class="btn btn-primary btn-lg" href="OrderSuccessful" role="button">FORTSÄTT</a>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary btn-rounded" href="Shipping">BEKRÄFTA UPPGIFTER</button>
+                            }
+                </div>
             </form>
         </div>
     </div>

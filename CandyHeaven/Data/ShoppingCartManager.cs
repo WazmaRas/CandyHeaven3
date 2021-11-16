@@ -21,14 +21,13 @@ namespace CandyHeaven.Data
             {
                 ShopCart = new List<Models.Product>();
             }
-            //foreach (var item in ShopCart)
-            //{
-            //    if (item.Id > 1)
-            //    {
-            //        item.cartQuantity++;
-            //    }
-            //}
-          
+            foreach (var item in ShopCart)
+            {
+                if (item.Id > 1)
+                {
+                    item.cartQuantity++;
+                }
+            }
 
             return ShopCart;
         }
@@ -38,11 +37,16 @@ namespace CandyHeaven.Data
         /// <param name="id"></param>
         /// <returns></returns>
         public static List<Models.Product> AddToCart(int id)
-
         {
+            if (ShopCart == null || !ShopCart.Any())
+            {
+                ShopCart = new List<Models.Product>();
+            }
+      
             Product = Products.Where(product => product.Id == id).FirstOrDefault();
-            ShopCart.Add(Product);
-            Product.StockQuantity= Product.StockQuantity - 1;
+
+                ShopCart.Add(Product);
+            
 
             return ShopCart;
         }
