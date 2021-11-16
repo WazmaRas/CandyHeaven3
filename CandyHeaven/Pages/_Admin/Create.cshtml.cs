@@ -50,7 +50,6 @@ namespace CandyHeaven.Pages._Admin
             if (Name != null)
             {
                 Data.ProductManager.AddProduct(newProduct);
-
             }
         }
     }

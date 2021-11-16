@@ -57,7 +57,26 @@ namespace CandyHeaven.Pages._Admin
             {
                 Product.Price = Price;
             }
-
+            if (Description != null)
+            {
+                Product.ProductInfo = Description;
+            }
+            if (Featured != false)
+            {
+                Product.Featured = Featured;
+            }
+            if (Stock != 0)
+            {
+                Product.StockQuantity = Stock;
+            }
+            if (ImageURL != null)
+            {
+                Product.ImageURL = ImageURL;
+            }
+            if (CandySort != null)
+            {
+           
+            }
             {
 
             }
