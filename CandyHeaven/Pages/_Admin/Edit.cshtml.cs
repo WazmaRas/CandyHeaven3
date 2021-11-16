@@ -13,27 +13,25 @@ namespace CandyHeaven.Pages._Admin
         public List<Models.Product> Products { get; set; } = Data.ProductManager.Products;
         public Models.Product Product { get; set; }
 
-   
         [BindProperty]
-        [Required]
         public string Name { get; set; }
+
         [BindProperty]
-        [Required]
         public string Description { get; set; }
+
         [BindProperty]
-        [Required]
         public double Price { get; set; }
+
         [BindProperty]
-        [Required]
         public bool Featured { get; set; }
+
         [BindProperty]
-        [Required]
         public int Stock { get; set; }
+
         [BindProperty]
-        [Required]
         public string ImageURL { get; set; }
+
         [BindProperty]
-        [Required]
         public string CandySort { get; set; }
 
         public int Id { get; set; }
@@ -44,15 +42,25 @@ namespace CandyHeaven.Pages._Admin
             {
                 Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
-
-        }   
+        }
         public void OnPost(int id)
         {
             if (id != 0)
             {
                 Product = Products.Where(product => product.Id == id).FirstOrDefault();
             }
+            if (Name != null)
+            {
+                Product.Name = Name;
+            }
+            if (Price != 0)
+            {
+                Product.Price = Price;
+            }
 
+            {
+
+            }
         }
     }
 }

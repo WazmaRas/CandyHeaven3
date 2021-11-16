@@ -8,7 +8,7 @@
             <th>Id</th>
             <th>Namn</th>
             <th>Beskrivning</th>
-                <th>Synlighet</th>
+            <th>Synlighet</th>
             <th>Pris</th>
             <th>Bildväg</th>
             <th>Lagersaldo</th>
@@ -16,19 +16,15 @@
     </thead>
     @foreach (var product in Model.Products)
     {
-
         <tr>
             <td>@product.Id</td>
             <td>@product.Name</td>
             <td>@product.ProductInfo</td>
-                <td>@product.Featured</td>
+            <td>@product.Featured</td>
             <td>@product.Price</td>
             <td>@product.ImageURL</td>
             <td>@product.StockQuantity</td>
-            
-
-
         </tr>
     }
-
 </table>
+<div class="col"><a type="submit" class="btn btn-primary btn-rounded" href="/_Admin/Index">Tillbaka</a></div>
