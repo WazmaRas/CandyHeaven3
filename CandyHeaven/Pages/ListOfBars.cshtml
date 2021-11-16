@@ -2,7 +2,7 @@
 @model CandyHeaven.Pages.ListOfBarsModel
 @{
 }
-
+<h1 text-align: center;>Heavenly Bars</h1>
 <form method="get">
     <div class="input-group">
         <input class="form-check form-control" asp-for="SearchTerm" />
@@ -11,6 +11,7 @@
         </div>
     </div>
 </form>
+
 <div class="row">
     @foreach (var item in Model.Products)
     {
