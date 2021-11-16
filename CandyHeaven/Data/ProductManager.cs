@@ -6,7 +6,7 @@ namespace CandyHeaven.Data
 {
     public class ProductManager
     {
-        public static Models.Product Product{ get; set; }
+        public static Models.Product Product { get; set; }
         public static List<Models.Product> Products { get; set; } = GetAllProducts();
         /// <summary>
         /// Method to get all products
@@ -40,19 +40,18 @@ namespace CandyHeaven.Data
 
 
         }
-            /// <summary>
-            /// Method for searching the productlist for users specific searchterm.
-            /// </summary>
-            /// <param name="searchTerm"></param>
-            /// <returns></returns>
-            public static List<Models.Product> Search(string searchTerm)
+        /// <summary>
+        /// Method for searching the productlist for users specific searchterm.
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <returns></returns>
+        public static List<Models.Product> Search(string searchTerm)
         {
             List<Models.Product> AllProducts = GetAllProducts();
 
             if (string.IsNullOrEmpty(searchTerm))
             {
                 return AllProducts;
-                ;
             }
             return AllProducts.Where(product => product.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
         }

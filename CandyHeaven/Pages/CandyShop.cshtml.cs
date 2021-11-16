@@ -30,9 +30,12 @@ namespace CandyHeaven.Pages
             //var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
             //var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            //Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options); 
+            //Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options);
+            if (SearchTerm != null)
+            {
+                Products = Data.ProductManager.Search(SearchTerm);
+            }
 
-           
             if (id != 0)
             {
                 ShopCart = Data.ShoppingCartManager.AddToCart(id);
