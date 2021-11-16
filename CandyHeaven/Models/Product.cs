@@ -16,6 +16,8 @@ namespace CandyHeaven.Models
         public string ProductInfo { get; set; }
         public int cartQuantity { get; set; }
 
+        public Product() { }
+
         public Product(int id, string name, string description, bool featured, double price, string imageUrl, int stock)
         {
             Id = id;
