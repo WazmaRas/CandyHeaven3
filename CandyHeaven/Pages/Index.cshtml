@@ -16,9 +16,9 @@
     <p class="lead">Make life a little sweeter</p>
     <hr class="my-4">
     <p class="lead">
-        <a  class="btn btn-primary btn-lg" href="/CandyShop" role="button">Shoppa mer</a>
-        <a  class="btn btn-primary btn-lg" href="/ListOfBars" role="button">Bars</a>
-        <a  class="btn btn-primary btn-lg" href="/CandyBag" role="button">Godispåsar</a>
+        <a class="btn btn-primary btn-lg" href="/CandyShop" role="button">Shoppa mer</a>
+        <a class="btn btn-primary btn-lg" href="/ListOfBars" role="button">Bars</a>
+        <a class="btn btn-primary btn-lg" href="/CandyBag" role="button">Godispåsar</a>
         <a class="btn btn-primary btn-lg" href="/BulkCandy" role="button">Lösvikt</a>
     </p>
 </div>
@@ -28,7 +28,13 @@
         <div class="card col-3" style="width: 18rem;">
             <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@prod.Name</h5>
+                <h5 class="card-title">
+                    @prod.Name
+                    @if (prod is Models.BulkCandy)
+                    {
+                        @(((Models.BulkCandy)prod).Weight + "kg")
+                    }
+                </h5>
                 <h6>Lagersaldo: @prod.StockQuantity</h6><br />
                 <h5>@prod.Price.ToString("n2") kr</h5>
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -39,7 +45,7 @@
                         @prod.ProductInfo
                         @if (prod is Models.BulkCandy)
                         {
-                            <h6>Sort: @(((Models.BulkCandy)prod).CandySort)</h6>
+                            <h6>Smak: @(((Models.BulkCandy)prod).CandySort)</h6>
                         }
                         @if (prod is Models.Bar)
                         {
@@ -54,5 +60,4 @@
             </div>
         </div>
     }
-    
 </div>

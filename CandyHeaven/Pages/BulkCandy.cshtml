@@ -28,7 +28,7 @@
             <div class="card col-3" style="width: 18rem;">
                 <img class="card-img-top" src=@item.ImageURL alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
+                    <h5 class="card-title">@item.Name @(((Models.BulkCandy)item).Weight + "kg")</h5>
                     <h6>Lagersaldo: @item.StockQuantity</h6><br />
                     <h5>@item.Price.ToString("n2") kr</h5>
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">

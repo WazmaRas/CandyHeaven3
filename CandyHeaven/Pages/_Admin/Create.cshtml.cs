@@ -46,7 +46,7 @@ namespace CandyHeaven.Pages._Admin
 
         public void OnPost()
         {
-            Models.Product newProduct = new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort);
+            Models.Product newProduct = new Models.Product(Id, Name, Description, Featured, Price, ImageURL, Stock);
             if (Name != null)
             {
                 Data.ProductManager.AddProduct(newProduct);
