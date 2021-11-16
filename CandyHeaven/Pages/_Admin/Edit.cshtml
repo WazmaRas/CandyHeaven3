@@ -17,11 +17,11 @@
             </thead>
             <tr>
                 <td><input asp-for="@Model.Name" />@Model.Product.Name</td>
-                <td><input type="text" name="name" value="" />@Model.Product.ProductInfo</td>
-                <td><input type="checkbox" name="name" value="" /></td>
+                <td><input asp-for="@Model.Description"/>@Model.Product.ProductInfo</td>
+                <td><input asp-for="@Model.Featured"/></td>
                 <td><input asp-for="@Model.Price" />@Model.Product.Price.ToString("n2")</td>
-                <td><input type="text" name="name" value="" />@Model.Product.ImageURL</td>
-                <td><input type="number" name="name" value="" />@Model.Product.StockQuantity</td>
+                <td><input asp-for="@Model.ImageURL"/>@Model.Product.ImageURL</td>
+                <td><input asp-for="@Model.Stock"/>@Model.Product.StockQuantity</td>
             </tr>
         </table>
         <button type="submit" class="btn btn-primary btn-rounded" href="/_Admin/Edit">Spara</button>
