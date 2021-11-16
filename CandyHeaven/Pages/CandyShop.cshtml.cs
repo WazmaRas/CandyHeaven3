@@ -12,7 +12,7 @@ namespace CandyHeaven.Pages
     public class CandyShopModel : PageModel
     {
 
-        public List<Models.ProductAPI> Products { get; set; }
+        public List<Models.Product> Products { get; set; }
         public List<Models.Product> ShopCart { get; set; }
         // vi vill att Modelbinding ska ocskå funka på en get-request
         [BindProperty(SupportsGet = true)]
@@ -30,7 +30,7 @@ namespace CandyHeaven.Pages
             var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
             var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            Products = JsonSerializer.Deserialize<List<Models.ProductAPI>>(apiResponse, options); 
+            Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options); 
            
             if (id != 0)
             {

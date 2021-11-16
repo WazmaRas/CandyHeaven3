@@ -27,8 +27,9 @@ namespace CandyHeaven.Pages._Admin
             var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
             var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
+           
 
-             Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options);
+            Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options);
             Data.ProductManager.Products = Products;
             if (id != 0)
             {
