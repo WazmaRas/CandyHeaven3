@@ -55,9 +55,6 @@ namespace CandyHeaven.Data
                 ;
             }
             return AllProducts.Where(product => product.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
-
-
-
         }
 
         public static void AddProduct(Models.Product productToAdd)

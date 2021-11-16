@@ -12,7 +12,7 @@ namespace CandyHeaven.Pages
     public class CandyShopModel : PageModel
     {
 
-        public List<Models.Product> Products { get; set; }
+        public List<Models.Product> Products { get; set; } = Data.ProductManager.Products;
         public List<Models.Product> ShopCart { get; set; }
         // vi vill att Modelbinding ska ocskå funka på en get-request
         [BindProperty(SupportsGet = true)]
@@ -20,17 +20,18 @@ namespace CandyHeaven.Pages
         
         public void OnGet(int id)
         {
-            var httpClient = new HttpClient();
+            //var httpClient = new HttpClient();
 
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
+            //var options = new JsonSerializerOptions
+            //{
+            //    PropertyNameCaseInsensitive = true
+            //};
 
-            var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
-            var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            //var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
+            //var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options); 
+            //Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options); 
+
            
             if (id != 0)
             {

@@ -7,9 +7,9 @@
         <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
     </a>
 </nav>
-<h1 text-align: center;>Batch Made in Heaven</h1>
-
-
+<div class="row">
+    <h1 text-align: center;>Batch Made in Heaven</h1>
+</div>
 
 <form method="get">
     <div class="input-group">
@@ -20,52 +20,29 @@
     </div>
 </form>
 
-
-
 <div class="row">
     @foreach (var item in Model.Products)
     {
-        if (item is Models.BulkCandy)
+        @if (item is Models.BulkCandy)
         {
             <div class="card col-3" style="width: 18rem;">
                 <img class="card-img-top" src=@item.ImageURL alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
-
-                    <h6>@item.Price.ToString("n2")kr</h6>
-                    <p>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Mer info
-                        </button>
-                    </p>
-
+                    <h6>Lagersaldo: @item.StockQuantity</h6><br />
+                    <h5>@item.Price.ToString("n2") kr</h5>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Mer info
+                    </button>
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             @item.ProductInfo
-                            <h6>
-                                Godis Sort :
-                                @(((Models.BulkCandy)item).CandySort)
-                            </h6>
-
-                            @if (item.StockQuantity > 0)
-                            {
-                                <h6 > Finns på lager : @item.StockQuantity</h6>
-                            }
-                            else
-                            {
-                                <h6> Ej på lager</h6>
-                            }
-
-
+                            <h6>Sort: @(((Models.BulkCandy)item).CandySort)</h6>
                         </div>
                     </div>
-
-                    <a  asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    <a asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
                 </div>
             </div>
-
         }
-
-
     }
 </div>
