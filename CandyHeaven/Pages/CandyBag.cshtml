@@ -14,33 +14,37 @@
 </form>
 
 <div class="row">
-    @foreach (var item in Model.Products)
+    @foreach (var product in Model.Products)
     {
-        if (item is Models.CandyBag)
+        if (product is Models.CandyBag)
         {
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src=@item.ImageURL alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <h6>Lagersaldo: @item.StockQuantity</h6><br />
-                    <h5>@item.Price.ToString("n2") kr</h5>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Mer info
-                    </button>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            @item.ProductInfo
-                            <h6>
-                                Vikt på påsen:
-                                @(((Models.CandyBag)item).Weight) gram
-                            </h6>
-                        </div>
-                    </div>
-
-                    <a asp-route-id=@item.Id class="btn btn-primary">Lägg till i varukorg</a>
-
+    <div class="card col-3" style="width: 18rem;">
+        <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@product.Name</h5>
+            <h6>Lagersaldo: @product.StockQuantity</h6><br />
+            <h5>@product.Price.ToString("n2") kr</h5>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Mer info
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    @product.ProductInfo
+                    <h6>
+                        Vikt på påsen:
+                        @(((Models.CandyBag)product).Weight) gram
+                    </h6>
                 </div>
-            </div>
+            </div>@if (product.StockQuantity != 0)
+            {
+                <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+            }
+            else
+            {
+                <h6>Slut på lager</h6>
+            }
+        </div>
+    </div>
 
         }
 
