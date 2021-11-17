@@ -46,11 +46,13 @@ namespace CandyHeaven.Pages._Admin
 
         public void OnPost()
         {
-           
+            var orderByID = Products.OrderBy(product => product.Id).LastOrDefault();
+            Id = orderByID.Id;
+            Id++;
 
-            
-            
-            if(CandySort != null && Weight != 0 )
+
+
+            if (CandySort != null && Weight != 0 )
             {
                 Models.Product bulkCandy= new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort,Weight);
                 Data.ProductManager.AddProduct(bulkCandy);
@@ -70,9 +72,7 @@ namespace CandyHeaven.Pages._Admin
                 Models.Product newProduct = new Models.Product(Id, Name, Description, Featured, Price, ImageURL, Stock);
                 Data.ProductManager.AddProduct(newProduct);
             }
-            var orderByID = Products.OrderBy(product => product.Id).LastOrDefault();
-            Id = orderByID.Id;
-            Id++;
+           
           
             
 

@@ -25,7 +25,7 @@ namespace CandyHeaven.Pages.ShoppingCart
         [BindProperty]
         [Required]
         public string Adress { get; set; }
-      
+
         [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
         [BindProperty]
@@ -34,34 +34,40 @@ namespace CandyHeaven.Pages.ShoppingCart
         public string Payment { get; set; }
         [BindProperty]
         public double ShippingCost { get; set; }
-     
+
         [BindProperty]
         public double Sum { get; set; }
+        public double Tax { get; set; } = 0.12;
+
 
         public void OnGet(string confirm)
         {
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
+            Tax = Sum * Tax;
         }
- 
+
         public void OnPost(string confirm)
 
         {
-                ShoppingCart = Data.ShoppingCartManager.GetProducts();
-                Sum = ShoppingCart.Sum(product => product.Price);
+            ShoppingCart = Data.ShoppingCartManager.GetProducts();
+            Sum = ShoppingCart.Sum(product => product.Price);
+            Tax = Sum * Tax;
 
-                if (Shipping == "DHL")
-                {
-                    ShippingCost = Sum + 39;
-                }
-                if (Shipping == "Instabox")
-                {
-                    ShippingCost = Sum + 29;
-                }
-                if (Shipping == "Hämta i butik")
-                {
-                    ShippingCost = Sum + 0;
-                }
+
+            if (Shipping == "DHL")
+            {
+                ShippingCost = Sum + 39;
+            }
+            if (Shipping == "Instabox")
+            {
+                ShippingCost = Sum + 29;
+            }
+            if (Shipping == "Hämta i butik")
+            {
+                ShippingCost = Sum + 0;
+            }
+
         }
     }
 }

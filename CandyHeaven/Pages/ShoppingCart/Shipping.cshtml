@@ -49,15 +49,21 @@
                                 <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
 
                             </td>
-                            @*<td><input type="number" name="quantities" value="@product.StockQuantity" min="1" style="width: 50px;" /></td>*@
+                           
                             <td>@product.Price.ToString("n2") kr</td>
                         </tr>
                     }
                     <tfoot>
                         <tr>
-                            <td colspan="2"><h4>Totala summan: <br />Inkl. Frakt och Moms</h4></td>
+                            <td colspan="2">
+                                <h4>Totala summan:</h4>
+                                <h6>Varav Moms</h6>
+                               
+                            </td>
                             <td></td>
-                            <td><h4>@(Model.ShippingCost == 0? @Model.Sum.ToString("n2") : @Model.ShippingCost.ToString("n2")) kr</h4></td>
+                            <td><h4>@(Model.ShippingCost == 0? @Model.Sum.ToString("n2") : @Model.ShippingCost.ToString("n2")) kr</h4>
+                                <h6>@Model.Tax.ToString("n2") kr</h6>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
@@ -104,13 +110,13 @@
                         <div class="col-2">
                             <div class="form-outline">
                                 <input type="radio" asp-for="@Model.Shipping" value="DHL" required>
-                                <label for="DHL">DHL Express</label><br>
+                                <label for="DHL">DHL Express  (39kr)</label><br>
 
                                 <input type="radio" asp-for="@Model.Shipping" value="Instabox">
-                                <label for="InstaBox">Instabox</label><br>
+                                <label for="InstaBox">Instabox  (29kr)</label><br>
 
                                 <input type="radio" asp-for="@Model.Shipping" value="Hämta i butik">
-                                <label for="Butik">Hämta i butik</label>
+                                <label for="Butik">Hämta i butik  (0kr)</label>
                             </div>
                         </div>
                     </div>
