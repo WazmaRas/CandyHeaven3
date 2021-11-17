@@ -20,17 +20,8 @@ namespace CandyHeaven.Pages
         
         public void OnGet(int id)
         {
-            //var httpClient = new HttpClient();
-
-            //var options = new JsonSerializerOptions
-            //{
-            //    PropertyNameCaseInsensitive = true
-            //};
-
-            //var response = httpClient.GetAsync("https://localhost:44388/Shop").GetAwaiter().GetResult();
-            //var apiResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-            //Products = JsonSerializer.Deserialize<List<Models.Product>>(apiResponse, options);
+            var sortByName = Products.OrderBy(prod => prod.Name).ToList();
+            
             if (SearchTerm != null)
             {
                 Products = Data.ProductManager.Search(SearchTerm);

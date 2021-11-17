@@ -6,10 +6,8 @@
     <a class="navbar-brand" href="/CandyHeavenLogo.png">
         <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
     </a>
-</nav>
-<div class="row">
     <h1 text-align: center;>Batch Made in Heaven</h1>
-</div>
+</nav>
 
 <form method="get">
     <div class="input-group">
@@ -25,7 +23,7 @@
     {
         @if (product is Models.BulkCandy)
         {
-    <div class="card col-3" style="width: 18rem;">
+    <div class="card col-3" style="width: 18rem; padding: 4px; border: 6px;">
         <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">@product.Name @(((Models.BulkCandy)product).Weight + "kg")</h5>
@@ -34,12 +32,7 @@
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Mer info
             </button>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    @product.ProductInfo
-                    <h6>Sort: @(((Models.BulkCandy)product).CandySort)</h6>
-                </div>
-            </div>@if (product.StockQuantity != 0)
+            @if (product.StockQuantity != 0)
             {
                 <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
             }
@@ -47,6 +40,12 @@
             {
                 <h6 class="btn btn-primary">Slut på lager</h6>
             }
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    @product.ProductInfo
+                    <h6>Sort: @(((Models.BulkCandy)product).CandySort)</h6>
+                </div>
+            </div>
         </div>
     </div>
         }

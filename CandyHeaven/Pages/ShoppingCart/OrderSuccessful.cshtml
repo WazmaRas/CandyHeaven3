@@ -2,24 +2,22 @@
 @model CandyHeaven.Pages.ShoppingCart.OrderSuccessfulModel
 @{
 }
+<nav class="navbar navbar-expand-md navbar-light">
 
+    <a class="navbar-brand" href="#!">
+        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
+    </a>
+
+</nav>
 <div style="background-color:lightpink " class="jumbotron">
     <h1 class="display-4 text-center">Tack för din order!</h1>
 
     <hr class="my-4">
     <h5>Ordernummer : @Model.Ordernumber</h5>
-    <nav class="navbar navbar-expand-md navbar-light">
 
-        <a class="navbar-brand" href="#!">
-            <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
-        </a>
-
-
-    </nav>
-
-
-</div>    
-
-    <div class="row float-right">
-            <a class="btn btn-outline-dark btn-lg" href="/index" role="button">Gå tillbaka till startsidan</a>
+</div>
+<div class="row">
+    <div class="col-12 text-right">
+        <a class="btn btn-primary btn-lg" href="/index" role="button">Gå tillbaka till startsidan</a>
     </div>
+</div>

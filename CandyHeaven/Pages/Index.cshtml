@@ -4,20 +4,14 @@
     ViewData["Title"] = "Home page";
 }
 
-<nav class="navbar navbar-expand-md navbar-light">
 
-    <a class="navbar-brand" href="#!">
-        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
-    </a>
-</nav>
 
-<div  @*style="background-color: #A4FFF5 "*@ class="jumbotron"  style="background-image: url(vecteezy_colorful-candies-jelly-and-marmalade_2310706.jpg); background-size: 100%; ">
-    <
+<div class="jumbotron"  style="background-image: url(vecteezy_colorful-candies-jelly-and-marmalade_2310706.jpg); background-size: 100%; ">
     <h1 style="text-align:center;" class="display-4">Candy Heaven</h1>
     <p style="text-align:center;" class="lead">Make life a little sweeter</p>
     <hr class="my-4">
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/CandyShop" role="button">Shoppa mer</a>
+    <p class="lead text-center">
+        <a class="btn btn-primary btn-lg" href="/CandyShop" role="button">Sortiment</a>
         <a class="btn btn-primary btn-lg" href="/ListOfBars" role="button">Bars</a>
         <a class="btn btn-primary btn-lg" href="/CandyBag" role="button">Godispåsar</a>
         <a class="btn btn-primary btn-lg" href="/BulkCandy" role="button">Lösvikt</a>
@@ -26,7 +20,7 @@
 <div class="row">
     @foreach (var prod in Model.Products)
     {
-        <div class="card col-3" style="width: 18rem;">
+        <div class="card col-3 text-center" style="width: 18rem; padding:4px; border:6px;">
             <img class="card-img-top" src=@prod.ImageURL alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">
@@ -41,6 +35,8 @@
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Mer info
                 </button>
+
+                <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         @prod.ProductInfo
@@ -57,7 +53,7 @@
                             <h6>Vikt: @(((Models.CandyBag)prod).Weight) gram</h6>
                         }
                     </div>
-                </div><a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                </div>
             </div>
         </div>
     }

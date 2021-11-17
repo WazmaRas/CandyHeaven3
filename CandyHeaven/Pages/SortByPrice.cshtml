@@ -2,17 +2,27 @@
 @model CandyHeaven.Pages.SortByPriceModel
 @{
 }
+<nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" href="/CandyHeavenLogo.png">
+        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
+    </a>
+    <h1 text-align: center;>Candy Heaven</h1>
 
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        Soretera efter:
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-        <li><a href="SortByName">Namn A-Ö</a></li>
-        <li><a href="SortByPrice">Lägst pris </a></li>
-        <li><a href="SortByPriceDescending">Högst pris</a></li>
-    </ul>
+</nav>
+<div class="row">
+    <div class="col-12 text-right">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Sortera efter:
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="SortByName">Namn A-Ö</a></li>
+                <li><a href="SortByPrice">Lägst pris </a></li>
+                <li><a href="SortByPriceDescending">Högst pris</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 
@@ -30,7 +40,7 @@
 <div class="row">
     @foreach (var product in Model.Result)
     {
-        <div class="card col-3" style="width: 18rem;">
+        <div class="card col-3" style="width: 18rem; padding: 4px; border: 6px;">
             <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">

@@ -2,8 +2,13 @@
 @model CandyHeaven.Pages.CandyBagModel
 @{
 }
+<nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" href="#!">
+        <img src="~/CandyHeavenLogo.png" height="200" alt="mdb logo">
+    </a>
+    <h1 text-align: center;>A bite to sweet</h1>
+</nav>
 
-<h1 text-align: center;>A bite to sweet</h1>
 <form method="get">
     <div class="input-group">
         <input class="form-check form-control" asp-for="SearchTerm" />
@@ -18,7 +23,7 @@
     {
         if (product is Models.CandyBag)
         {
-    <div class="card col-3" style="width: 18rem;">
+    <div class="card col-3" style="width: 18rem; padding: 4px; border: 6px;">
         <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">@product.Name</h5>
@@ -27,6 +32,15 @@
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Mer info
             </button>
+
+            @if (product.StockQuantity != 0)
+            {
+                <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+            }
+            else
+            {
+                <h6>Slut på lager</h6>
+            }
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     @product.ProductInfo
@@ -35,19 +49,9 @@
                         @(((Models.CandyBag)product).Weight) gram
                     </h6>
                 </div>
-            </div>@if (product.StockQuantity != 0)
-            {
-                <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
-            }
-            else
-            {
-                <h6>Slut på lager</h6>
-            }
+            </div>
         </div>
     </div>
-
         }
-
-
     }
 </div>

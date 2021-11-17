@@ -9,7 +9,10 @@ namespace CandyHeaven.Pages.ShoppingCart
 {
     public class ShoppingCartModel : PageModel
     {
+        [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
+        [BindProperty]
+        //public List<Models.Product> GetItemInCart { get; set; }
         public string ItemsInCart { get; set; }
         public double Sum { get; set; }
         public double Tax { get; set; } = 0.12;
