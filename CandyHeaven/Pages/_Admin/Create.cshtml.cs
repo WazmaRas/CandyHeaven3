@@ -46,11 +46,38 @@ namespace CandyHeaven.Pages._Admin
 
         public void OnPost()
         {
-            Models.Product newProduct = new Models.Product(Id, Name, Description, Featured, Price, ImageURL, Stock);
-            if (Name != null)
+           
+
+            
+            
+            if(CandySort != null && Weight != 0 )
             {
+                Models.Product bulkCandy= new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort,Weight);
+                Data.ProductManager.AddProduct(bulkCandy);
+            }
+            else if (Taste != null )
+            {
+                Models.Product bar = new Models.Bar(Id, Name, Description, Featured, Price, ImageURL, Stock, Taste);
+                Data.ProductManager.AddProduct(bar);
+            }
+            else if (Weight != 0)
+            {
+                Models.Product candyBag = new Models.CandyBag(Id, Name, Description, Featured, Price, ImageURL, Stock, Weight);
+                Data.ProductManager.AddProduct(candyBag);
+            }
+            else if(Weight == 0 && Taste == null && CandySort == null && Name != null)
+            {
+                Models.Product newProduct = new Models.Product(Id, Name, Description, Featured, Price, ImageURL, Stock);
                 Data.ProductManager.AddProduct(newProduct);
             }
+            var orderByID = Products.OrderBy(product => product.Id).LastOrDefault();
+            Id = orderByID.Id;
+            Id++;
+          
+            
+
+
+
         }
     }
 }
