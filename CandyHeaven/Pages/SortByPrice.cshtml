@@ -40,46 +40,47 @@
 <div class="row">
     @foreach (var product in Model.Result)
     {
-        <div class="card col-3" style="width: 18rem; padding: 4px; border: 6px;">
-            <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">
-                    @product.Name
-                    @if (product is Models.BulkCandy)
-                    {
-                        @(((Models.BulkCandy)product).Weight + "kg")
-                    }
-                </h5>
-                <h6>Lagersaldo: @product.StockQuantity</h6><br />
-                <h5>@product.Price.ToString("n2") kr</h5>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Mer info
-                </button>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        @product.ProductInfo
-                        @if (product is Models.BulkCandy)
-                        {
-                            <h6>Smak: @(((Models.BulkCandy)product).CandySort)</h6>
-                        }
-                        @if (product is Models.Bar)
-                        {
-                            <h6>Smak: @(((Models.Bar)product).Taste)</h6>
-                        }
-                        @if (product is Models.CandyBag)
-                        {
-                            <h6>Vikt: @(((Models.CandyBag)product).Weight) gram</h6>
-                        }
-                    </div>
-                </div>@if (product.StockQuantity != 0)
+    <div class="card col-3" style="width: 18rem; padding: 4px; border: 6px;">
+        <img class="card-img-top" src=@product.ImageURL alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">
+                @product.Name
+                @if (product is Models.BulkCandy)
                 {
-                    <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+                    @(((Models.BulkCandy)product).Weight + "kg")
                 }
-                else
+            </h5>
+            <h6>Lagersaldo: @product.StockQuantity</h6><br />
+            <h5>@product.Price.ToString("n2") kr</h5>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Mer info
+            </button>
+
+        </div>@if (product.StockQuantity != 0)
+        {
+            <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+        }
+        else
+        {
+            <h6 class="btn btn-primary">Slut på lager</h6>
+        }
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                @product.ProductInfo
+                @if (product is Models.BulkCandy)
                 {
-                    <h6 class="btn btn-primary">Slut på lager</h6>
+                    <h6>Smak: @(((Models.BulkCandy)product).CandySort)</h6>
+                }
+                @if (product is Models.Bar)
+                {
+                    <h6>Smak: @(((Models.Bar)product).Taste)</h6>
+                }
+                @if (product is Models.CandyBag)
+                {
+                    <h6>Vikt: @(((Models.CandyBag)product).Weight) gram</h6>
                 }
             </div>
         </div>
+    </div>
     }
 </div>
