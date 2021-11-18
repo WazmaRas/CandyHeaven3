@@ -45,8 +45,8 @@
                             <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
                             <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
                             <td>
-                                <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
-                                <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
+                                @*<a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
+                                <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>*@
 
                             </td>
 
