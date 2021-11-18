@@ -35,8 +35,14 @@
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Mer info
                 </button>
-
-                <a asp-route-id=@prod.Id class="btn btn-primary">Lägg till i varukorg</a>
+                @if (product.StockQuantity != 0)
+                {
+                    <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+                }
+                else
+                {
+                    <h6 class="btn btn-primary">Slut på lager</h6>
+                }
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         @prod.ProductInfo

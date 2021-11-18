@@ -56,29 +56,31 @@
                 Mer info
             </button>
 
-        </div>@if (product.StockQuantity != 0)
-        {
-            <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
-        }
-        else
-        {
-            <h6 class="btn btn-primary">Slut på lager</h6>
-        }
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                @product.ProductInfo
-                @if (product is Models.BulkCandy)
-                {
-                    <h6>Smak: @(((Models.BulkCandy)product).CandySort)</h6>
-                }
-                @if (product is Models.Bar)
-                {
-                    <h6>Smak: @(((Models.Bar)product).Taste)</h6>
-                }
-                @if (product is Models.CandyBag)
-                {
-                    <h6>Vikt: @(((Models.CandyBag)product).Weight) gram</h6>
-                }
+
+            @if (product.StockQuantity != 0)
+            {
+                <a asp-route-id=@product.Id class="btn btn-primary">Lägg till i varukorg</a>
+            }
+            else
+            {
+                <h6 class="btn btn-primary">Slut på lager</h6>
+            }
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    @product.ProductInfo
+                    @if (product is Models.BulkCandy)
+                    {
+                        <h6>Smak: @(((Models.BulkCandy)product).CandySort)</h6>
+                    }
+                    @if (product is Models.Bar)
+                    {
+                        <h6>Smak: @(((Models.Bar)product).Taste)</h6>
+                    }
+                    @if (product is Models.CandyBag)
+                    {
+                        <h6>Vikt: @(((Models.CandyBag)product).Weight) gram</h6>
+                    }
+                </div>
             </div>
         </div>
     </div>
