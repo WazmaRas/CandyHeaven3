@@ -16,21 +16,21 @@
         <thead class="thead-dark">
             <tr>
                 <th colspan="2">Produkt</th>
-                <th class="text-center">Antal</th>
+                <th>Antal</th>
                 <th>Summa</th>
             </tr>
         </thead>
         @foreach (var productInCart in Model.ItemsInCart)
         {
-            <tr>
-                <td><img class="cart-images" src="@productInCart.Product.ImageURL" alt="@productInCart.Product.Name image" /></td>
-                <td>@productInCart.Product.Name <br />@(productInCart.Product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
-                <td>
-                    <a asp-page="ShoppingCart" asp-route-removeId="@productInCart.Product.Id" class="btn btn-outline-dark">-</a><p>@productInCart.NumberOfProduct</p>
-                    <a asp-page="ShoppingCart" asp-route-addId="@productInCart.Product.Id" class="btn btn-outline-dark">+</a>
-                </td>
-                <td>@productInCart.Product.Price.ToString("n2") kr</td>
-            </tr>
+    <tr>
+        <td><img class="cart-images" src="@productInCart.Product.ImageURL" alt="@productInCart.Product.Name image" /></td>
+        <td>@productInCart.Product.Name <br />@(productInCart.Product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
+        <td>
+            <p>@productInCart.NumberOfProduct st</p><a asp-page="ShoppingCart" asp-route-removeId="@productInCart.Product.Id" class="btn btn-outline-dark">-</a>
+            <a asp-page="ShoppingCart" asp-route-addId="@productInCart.Product.Id" class="btn btn-outline-dark">+</a>
+        </td>
+        <td>@productInCart.Product.Price.ToString("n2") kr</td>
+    </tr>
         }
         <tfoot>
             <tr>
