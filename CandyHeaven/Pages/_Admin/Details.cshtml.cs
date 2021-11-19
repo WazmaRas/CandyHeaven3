@@ -11,8 +11,14 @@ namespace CandyHeaven.Pages._Admin
     {
 
         public List<Models.Product> Products = Data.ProductManager.Products;
-        public void OnGet()
+        public Models.Product Product { get; set; }
+
+        public void OnGet(int id)
         {
+            if (id != 0)
+            {
+                Product = Products.Where(product => product.Id == id).FirstOrDefault();
+            }
         }
     }
 }

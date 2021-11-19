@@ -14,7 +14,7 @@ namespace CandyHeaven.Models
         public bool Featured { get; set; }
         public int StockQuantity { get; set; }
         public string ProductInfo { get; set; }
-        public int cartQuantity { get; set; }
+        public int CartQuantity { get; set; }
 
         public Product() { }
 

@@ -25,7 +25,7 @@ namespace CandyHeaven.Data
             {
                 if (item.Id > 1)
                 {
-                    item.cartQuantity++;
+                    item.CartQuantity++;
                 }
             }
 
@@ -45,7 +45,7 @@ namespace CandyHeaven.Data
       
             Product = Products.Where(product => product.Id == id).FirstOrDefault();
 
-            if (Product.StockQuantity > 0)
+            if (Product.StockQuantity > 0 )
             {
                 ShopCart.Add(Product);
             }

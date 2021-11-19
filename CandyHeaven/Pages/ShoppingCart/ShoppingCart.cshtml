@@ -6,7 +6,7 @@
     <div class="text-center">
         <br />
         <br />
-        <h1>Varukorg (@Model.ShoppingCart.Count @Model.ItemsInCart)</h1>
+        <h1>Varukorg (@Model.ShoppingCart.Count @Model.ItemMessage)</h1>
         <br />
         <br />
     </div>
@@ -20,17 +20,16 @@
                 <th>Summa</th>
             </tr>
         </thead>
-        @foreach (var product in Model.ShoppingCart)
+        @foreach (var productInCart in Model.ItemsInCart)
         {
             <tr>
-                <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
-                <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
+                <td><img class="cart-images" src="@productInCart.Product.ImageURL" alt="@productInCart.Product.Name image" /></td>
+                <td>@productInCart.Product.Name <br />@(productInCart.Product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
                 <td>
-                    <a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
-                    <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>
-
+                    <a asp-page="ShoppingCart" asp-route-removeId="@productInCart.Product.Id" class="btn btn-outline-dark">-</a><p>@productInCart.NumberOfProduct</p>
+                    <a asp-page="ShoppingCart" asp-route-addId="@productInCart.Product.Id" class="btn btn-outline-dark">+</a>
                 </td>
-                <td>@product.Price.ToString("n2") kr</td>
+                <td>@productInCart.Product.Price.ToString("n2") kr</td>
             </tr>
         }
         <tfoot>

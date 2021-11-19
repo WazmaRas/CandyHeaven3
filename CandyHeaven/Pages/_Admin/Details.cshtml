@@ -14,17 +14,14 @@
             <th>Lagersaldo</th>
         </tr>
     </thead>
-    @foreach (var product in Model.Products)
-    {
         <tr>
-            <td>@product.Id</td>
-            <td>@product.Name</td>
-            <td>@product.ProductInfo</td>
-            <td>@product.Featured</td>
-            <td>@product.Price</td>
-            <td>@product.ImageURL</td>
-            <td>@product.StockQuantity</td>
+            <td>@Model.Product.Id</td>
+            <td>@Model.Product.Name</td>
+            <td>@Model.Product.ProductInfo</td>
+            <td>@Model.Product.Featured</td>
+            <td>@Model.Product.Price</td>
+            <td>@Model.Product.ImageURL</td>
+            <td>@Model.Product.StockQuantity</td>
         </tr>
-    }
 </table>
 <div class="col"><a type="submit" class="btn btn-primary btn-rounded" href="/_Admin/Index">Tillbaka</a></div>

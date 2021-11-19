@@ -50,8 +50,6 @@ namespace CandyHeaven.Pages._Admin
             Id = orderByID.Id;
             Id++;
 
-
-
             if (CandySort != null && Weight != 0 )
             {
                 Models.Product bulkCandy= new Models.BulkCandy(Id, Name, Description, Featured, Price, ImageURL, Stock, CandySort,Weight);

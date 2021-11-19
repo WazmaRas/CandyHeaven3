@@ -73,13 +73,7 @@ namespace CandyHeaven.Pages._Admin
             {
                 Product.ImageURL = ImageURL;
             }
-            if (CandySort != null)
-            {
            
-            }
-            {
-
-            }
         }
     }
 }
