@@ -29,7 +29,7 @@
             <p>@productInCart.NumberOfProduct st</p><a asp-page="ShoppingCart" asp-route-removeId="@productInCart.Product.Id" class="btn btn-outline-dark">-</a>
             <a asp-page="ShoppingCart" asp-route-addId="@productInCart.Product.Id" class="btn btn-outline-dark">+</a>
         </td>
-        <td>@productInCart.Product.Price.ToString("n2") kr</td>
+        <td><h6>@((productInCart.Product.Price*productInCart.NumberOfProduct).ToString("n2")) kr </h6><br />(á @productInCart.Product.Price.ToString("n2") kr st </td>
     </tr>
         }
         <tfoot>
@@ -43,6 +43,7 @@
             </tr>
         </tfoot>
     </table>
+
 </form>
 
 <div class="row">

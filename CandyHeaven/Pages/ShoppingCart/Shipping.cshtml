@@ -39,18 +39,15 @@
                             <th>Summa</th>
                         </tr>
                     </thead>
-                    @foreach (var product in Model.ShoppingCart)
+                    @foreach (var productInCart in Model.ItemsInCart)
                     {
                         <tr>
-                            <td><img class="cart-images" src="@product.ImageURL" alt="@product.Name image" /></td>
-                            <td>@product.Name <br />@(product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
+                            <td><img class="cart-images" src="@productInCart.Product.ImageURL" alt="@productInCart.Product.Name image" /></td>
+                            <td>@productInCart.Product.Name <br />@(productInCart.Product.StockQuantity > 0 ? "Finns i lager" : "Ej i lager")</td>
                             <td>
-                                @*<a asp-page="ShoppingCart" asp-route-removeId="@product.Id" class="btn btn-outline-dark">-</a>
-                                <a asp-page="ShoppingCart" asp-route-addId="@product.Id" class="btn btn-outline-dark">+</a>*@
-
+                                <p>@productInCart.NumberOfProduct st</p>
                             </td>
-
-                            <td>@product.Price.ToString("n2") kr</td>
+                            <td><h6>@((productInCart.Product.Price*productInCart.NumberOfProduct).ToString("n2")) kr </h6></td>
                         </tr>
                     }
                     <tfoot>

@@ -34,26 +34,49 @@ namespace CandyHeaven.Pages.ShoppingCart
         public string Payment { get; set; }
         [BindProperty]
         public double ShippingCost { get; set; }
+        [BindProperty]
+        public List<Models.ProductInCart> ItemsInCart { get; set; } = new List<Models.ProductInCart>();
+
 
         [BindProperty]
         public double Sum { get; set; }
         public double Tax { get; set; } = 0.12;
 
 
-        public void OnGet(string confirm)
+        public void OnGet()
         {
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
             Tax = Sum * Tax;
+
+            foreach (var item in ShoppingCart)
+            {
+
+                bool productAlreadyExists = false;
+                foreach (var itemInCart in ItemsInCart)
+                {
+                    if (itemInCart.Product == item)
+                    {
+                        itemInCart.NumberOfProduct++;
+                        productAlreadyExists = true;
+                    }
+                }
+                if (!productAlreadyExists)
+                {
+                    ItemsInCart.Add(new Models.ProductInCart(item));
+
+                }
+
+            }
+            ItemsInCart = ItemsInCart.OrderBy(product => product.Product.Name).ToList();
         }
 
-        public void OnPost(string confirm)
+        public void OnPost()
 
         {
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
             Sum = ShoppingCart.Sum(product => product.Price);
             Tax = Sum * Tax;
-
 
             if (Shipping == "DHL")
             {

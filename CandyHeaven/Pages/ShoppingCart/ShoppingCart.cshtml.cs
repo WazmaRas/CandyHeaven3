@@ -9,25 +9,11 @@ namespace CandyHeaven.Pages.ShoppingCart
 {
     public class ShoppingCartModel : PageModel
     {
-        public class ProductInCart
-        {
-            public ProductInCart(Models.Product newProduct)
-            {
-                Product = newProduct;
-            }
-
-            public Models.Product Product = new Models.Product();
-            public int NumberOfProduct = 1;
-        }
-
-
         [BindProperty]
         public List<Models.Product> ShoppingCart { get; set; }
 
         [BindProperty]
-        //public List<Models.Product> ItemsInCart { get; set; } = new List<Models.Product>();
-        
-        public List<ProductInCart> ItemsInCart { get; set; } = new List<ProductInCart>();
+        public List<Models.ProductInCart> ItemsInCart { get; set; } = new List<Models.ProductInCart>();
 
         public string ItemMessage { get; set; }
         public double Sum { get; set; }
@@ -48,15 +34,9 @@ namespace CandyHeaven.Pages.ShoppingCart
             {
                 ShoppingCart = Data.ShoppingCartManager.RemoveFromCart(removeId);
             }
+
             ShoppingCart = Data.ShoppingCartManager.GetProducts();
 
-            //foreach (var item in ShoppingCart)
-            //{
-            //    if (!ItemsInCart.Contains(item))
-            //    {
-            //        ItemsInCart.Add(item);
-            //    }
-            //}
             foreach (var item in ShoppingCart)
             {
                 bool productAlreadyExists = false;
@@ -70,9 +50,11 @@ namespace CandyHeaven.Pages.ShoppingCart
                 }
                 if (!productAlreadyExists)
                 {
-                    ItemsInCart.Add(new ProductInCart(item));
+                    ItemsInCart.Add(new Models.ProductInCart(item));
                 }
             }
+            ItemsInCart = ItemsInCart.OrderBy(product => product.Product.Name).ToList();
+
 
             ItemMessage = ShoppingCart.Count == 1 ? "Vara" : "Varor";
 

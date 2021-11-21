@@ -7,6 +7,7 @@ namespace CandyHeaven.Data
 {
     public class ShoppingCartManager
     {
+
         public static List<Models.Product> ShopCart { get; set; } = GetProducts();
         public static List<Models.Product> Products { get; set; } = ProductManager.GetAllProducts();
         public static Models.Product Product { get; set; }
@@ -20,13 +21,6 @@ namespace CandyHeaven.Data
             if (ShopCart == null || !ShopCart.Any())
             {
                 ShopCart = new List<Models.Product>();
-            }
-            foreach (var item in ShopCart)
-            {
-                if (item.Id > 1)
-                {
-                    item.CartQuantity++;
-                }
             }
 
             return ShopCart;
